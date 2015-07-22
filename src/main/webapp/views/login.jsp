@@ -46,7 +46,7 @@
 									<a href="#"> Esqueceu sua senha? </a>
 								</span>
 							</div>
-							<a class="btn btn-primary" href="index.jsp">Entrar</a>
+							<a class="btn btn-primary" ng-click="eventos.Autenticar()">Entrar</a>
 							<hr></hr>
 							Não registrado ? 
 							<a href="registeration.html">Click aqui </a>
