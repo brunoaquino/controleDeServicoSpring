@@ -19,16 +19,6 @@ public class HomeController {
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	@Transactional
 	public Usuario index(Usuario usuario) {
-		try {
-			Usuario usuario2 = null;
-			usuario2.setAtivo(true);
-		} catch (Exception e) {
-			try {
-				throw new Exception("erro");
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		}
 		return usuario;
 	}
 
