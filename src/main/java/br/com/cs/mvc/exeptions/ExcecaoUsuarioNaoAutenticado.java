@@ -1,4 +1,4 @@
-package br.com.cs.exeptions;
+package br.com.cs.mvc.exeptions;
 
 public class ExcecaoUsuarioNaoAutenticado extends RuntimeException {
 

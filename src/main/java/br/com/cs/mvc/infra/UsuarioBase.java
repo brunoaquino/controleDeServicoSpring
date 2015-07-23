@@ -1,4 +1,4 @@
-package br.com.cs.infra;
+package br.com.cs.mvc.infra;
 
 import java.io.Serializable;
 

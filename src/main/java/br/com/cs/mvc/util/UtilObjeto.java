@@ -1,4 +1,4 @@
-package br.com.cs.util;
+package br.com.cs.mvc.util;
 
 public class UtilObjeto {
 

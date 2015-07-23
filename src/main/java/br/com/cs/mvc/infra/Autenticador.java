@@ -1,6 +1,6 @@
-package br.com.cs.infra;
+package br.com.cs.mvc.infra;
 
-import br.com.cs.exeptions.ExcecaoUsuarioNaoAutenticado;
+import br.com.cs.mvc.exeptions.ExcecaoUsuarioNaoAutenticado;
 
 public class Autenticador {
 	private static Autenticador instancia;
