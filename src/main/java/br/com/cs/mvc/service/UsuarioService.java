@@ -6,19 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cs.mvc.model.Usuario;
-import br.com.cs.mvc.repositories.UsuarioRepository;
+import br.com.cs.mvc.repositories.UsuarioRepositoryHibernate;
 
 @Service
-public class UsuarioService {
+public class UsuarioService extends ServicoBase {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioRepositoryHibernate usuarioRepository;
 
 	public List<Usuario> getAllUsers() {
 		return this.usuarioRepository.getAllUsers();
 	}
 
-	// public Integer createUser(Usuario usuario) {
-	// return this.usuarioRepository.createUser(usuario);
-	// }
 }

@@ -4,4 +4,13 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>Controle de Serviço</display-name>
+
+	<filter>
+		<filter-name>filtroRequisicao</filter-name>
+		<filter-class>br.com.cs.filtro.FiltroRequisicao</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filtroRequisicao</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
