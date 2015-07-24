@@ -1,6 +1,10 @@
 package br.com.cs.mvc.conf;
 
+import javax.servlet.Filter;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import br.com.cs.mvc.filtro.FiltroRequisicao;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -17,6 +21,11 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
+	}
+	
+	@Override
+	protected Filter[] getServletFilters() {
+		return new Filter[] { new FiltroRequisicao()};
 	}
 
 }

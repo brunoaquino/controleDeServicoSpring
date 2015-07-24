@@ -9,7 +9,7 @@ angular.module('csAdmin').controller( 'LoginController', function($scope, $http)
 	
     $scope.eventos.Autenticar = function()
     { 
-		call('http://localhost:8080/controleDeServico/home/index', obj)
+		call('http://localhost:8080/controleDeServico/rest/home/index', obj)
 		.success(function(retorno){
 			$scope.login = retorno.email;
 			$scope.senha = retorno.senha;

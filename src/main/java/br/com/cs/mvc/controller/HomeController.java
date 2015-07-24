@@ -10,7 +10,7 @@ import br.com.cs.mvc.model.Usuario;
 import br.com.cs.mvc.service.UsuarioService;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/rest/home")
 public class HomeController {
 
 	@Autowired

@@ -8,12 +8,14 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.cs.mvc.model.Usuario;
 
+@WebFilter("/views/*")
 public class FiltroRequisicao implements Filter {
 
 	private static final String USUARIO_LOGADO = "UsuarioLogado";
@@ -26,8 +28,15 @@ public class FiltroRequisicao implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) servletResponse;
-
-		if (isUsuarioLogado(req)) {
+		
+		String urlDeAcesso = req.getRequestURI();
+		
+		if (urlDeAcesso.contains("/resources/") || urlDeAcesso.contains("/rest")) {
+			chain.doFilter(request, resp);
+			return;
+		}
+		
+		if (!urlDeAcesso.contains("login.jsp") && !isUsuarioLogado(req)) {
 			resp.sendRedirect("login.jsp");
 			return;
 		}
