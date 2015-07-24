@@ -1,11 +1,11 @@
-var modulo = angular.module('csAdmin', []);
+var modulo = angular.module('csAdmin', ['minhasDiretivas']);
 
 modulo.controller( 'LoginController', function($scope, $http) {
 	
 	
-	$scope.showModal = false;
+	$scope.modaltest = false;
     $scope.toggleModal = function(){
-        $scope.showModal = !$scope.showModal;
+        $scope.modaltest = !$scope.modaltest;
     };
 	
     $scope.autenticar = function()

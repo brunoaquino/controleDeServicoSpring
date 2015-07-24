@@ -1,1 +1,1 @@
-angular.module('csAdmin', []);
+angular.module('csAdmin', ['minhasDiretivas']);
