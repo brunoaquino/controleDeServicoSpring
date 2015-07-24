@@ -1,17 +1,18 @@
 package br.com.cs.mvc.conf;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @EnableWebMvc
-// @ComponentScan(basePackageClasses = { HomeController.class })
 @ComponentScan(basePackages = { "br.com.cs.mvc" })
+@Configuration
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
-	private static final String VIEW_RESOLVER_PREFIX = "/WEB-INF/views/";
-	private static final String VIEW_RESOLVER_SUFFIX = ".jsp";
+	// private static final String VIEW_RESOLVER_PREFIX = "/WEB-INF/views/";
+	// private static final String VIEW_RESOLVER_SUFFIX = ".jsp";
 
 	//
 	// @Bean
@@ -29,5 +30,4 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/resources/**").addResourceLocations(
 				"/resources/");
 	}
-
 }

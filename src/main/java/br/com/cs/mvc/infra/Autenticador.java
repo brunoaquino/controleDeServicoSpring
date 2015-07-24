@@ -1,44 +1,30 @@
 package br.com.cs.mvc.infra;
 
-import br.com.cs.mvc.exeptions.ExcecaoUsuarioNaoAutenticado;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import br.com.cs.mvc.model.Usuario;
+
+@Component
 public class Autenticador {
-	private static Autenticador instancia;
-	private ThreadLocal<UsuarioBase> usuarios;
-
-	public static Autenticador getInstancia() {
-		if (instancia == null) {
-			synchronized (Autenticador.class) {
-				if (instancia == null) {
-					instancia = new Autenticador();
-				}
-			}
-		}
-		return instancia;
+	
+	@Autowired
+	protected HttpServletRequest request;
+	
+	private static final String USUARIO_LOGADO = "UsuarioLogado";
+	
+	public void autenticaUsuarioNaSessao(Usuario usuario) {
+		request.getSession().setAttribute(USUARIO_LOGADO, usuario);
+	}
+	
+	public void getUsuarioNaSessao() {
+		request.getSession().getAttribute(USUARIO_LOGADO);
+	}
+	
+	public void removeUsuarioNaSessao() {
+		request.getSession().removeAttribute(USUARIO_LOGADO);
 	}
 
-	public UsuarioBase getUsuarioDaRequisicaoCorrente() {
-		if (usuarios == null || usuarios.get() == null) {
-			throw new ExcecaoUsuarioNaoAutenticado(
-					"O usuário da requisição ainda nÃo foi registrado.");
-		}
-
-		return usuarios.get();
-	}
-
-	public void registraUsuario(UsuarioBase usuario) {
-		if (usuarios == null) {
-			synchronized (getInstancia()) {
-				if (usuarios == null) {
-					usuarios = new ThreadLocal<UsuarioBase>();
-				}
-			}
-		}
-		usuarios.set(usuario);
-	}
-
-	public void cancelaRegistroDeUsuario() {
-		if (usuarios != null)
-			usuarios.remove();
-	}
 }

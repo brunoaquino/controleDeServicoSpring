@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cs.mvc.exeptions.ExcecaoInfraestrutura;
 import br.com.cs.mvc.model.Usuario;
 import br.com.cs.mvc.service.UsuarioService;
 
 @RestController
-@RequestMapping("/rest/home")
-public class HomeController {
+@RequestMapping("/rest/autenticacao")
+public class ControladorAutenticacao extends ControladorBase {
 
 	@Autowired
 	UsuarioService service;
-
-	@RequestMapping(value = "/index", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/autentica", method = RequestMethod.POST)
 	@Transactional
-	public Usuario index(Usuario usuario) {
+	public Usuario index(Usuario usuario) throws ExcecaoInfraestrutura {
+		service.autenticaUsuario(usuario);
 		return usuario;
 	}
-
 }

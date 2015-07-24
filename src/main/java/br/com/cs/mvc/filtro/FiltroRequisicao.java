@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.cs.mvc.model.Usuario;
 
-@WebFilter("/views/*")
+@WebFilter("/*")
 public class FiltroRequisicao implements Filter {
 
 	private static final String USUARIO_LOGADO = "UsuarioLogado";

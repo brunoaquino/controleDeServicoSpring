@@ -2,26 +2,36 @@ package br.com.cs.mvc.repositories;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cs.mvc.model.Usuario;
 
-@Transactional
 @Repository
-public class UsuarioRepositoryHibernate implements UsuarioRepository {
+public class UsuarioRepositoryHibernate extends RepositoryBase implements
+		UsuarioRepository {
 
-	@Autowired
-	private HibernateTemplate hibernateTemplate;
-
+	@Override
 	public List<Usuario> getAllUsers() {
 		return this.hibernateTemplate.loadAll(Usuario.class);
 	}
 
-	// public Integer createUser(Usuario usuario) {
-	// Usuario mergeUser = this.hibernateTemplate.merge(usuario);
-	// return mergeUser.getId();
-	// }
+	// não esquecer de fechar a sessao sempre que fiser alguma transacao
+
+	@Override
+	public Usuario getUsuarioPeloLoginESenha(Usuario usuario) {
+		Session sessao = getSession();
+
+		Criteria criteria = sessao.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("email", usuario.getEmail()));
+		criteria.add(Restrictions.eq("senha", usuario.getSenha()));
+
+		Usuario usuarioAutenticado = (Usuario) criteria.uniqueResult();
+		sessao.close();
+
+		return usuarioAutenticado;
+	}
+	
 }

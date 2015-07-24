@@ -46,11 +46,25 @@
 									<a href="#"> Esqueceu sua senha? </a>
 								</span>
 							</div>
-							<a class="btn btn-primary" ng-click="eventos.Autenticar()">Entrar</a>
+							<a class="btn btn-primary" ng-click="autenticar()">Entrar</a>
 							<hr></hr>
 							Não registrado ? 
 							<a href="registeration.html">Click aqui </a>
+							<button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
 						</form>
+						<modal title="Login form" visible="showModal">
+						    <form role="form">
+						      <div class="form-group">
+						        <label for="email">Email address</label>
+						        <input type="email" class="form-control" id="email" placeholder="Enter email" />
+						      </div>
+						      <div class="form-group">
+						        <label for="password">Password</label>
+						        <input type="password" class="form-control" id="password" placeholder="Password" />
+						      </div>
+						      <button type="submit" class="btn btn-default">Submit</button>
+						    </form>
+						 </modal>
 					</div>
 				</div>
 			</div>

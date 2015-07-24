@@ -8,8 +8,4 @@ public class ExcecaoUsuarioNaoAutenticado extends RuntimeException {
 		super(mensagem);
 	}
 
-	public ExcecaoUsuarioNaoAutenticado(String mensagem, Throwable e) {
-		super(e);
-	}
-
 }

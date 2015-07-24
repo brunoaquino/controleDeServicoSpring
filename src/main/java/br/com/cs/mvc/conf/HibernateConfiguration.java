@@ -34,8 +34,8 @@ public class HibernateConfiguration {
 		return ds;
 	}
 
-	@Bean
 	@Autowired
+	@Bean
 	public HibernateTemplate getHibernateTemplate(SessionFactory sessionFactory) {
 		HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
 		return hibernateTemplate;

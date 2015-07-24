@@ -20,6 +20,7 @@
 <script src="../resources/js/controllers/main-controller.js"></script>
 <script src="../resources/js/controllers/login-controller.js"></script>
 <script src="../resources/js/directives/minhas-diretivas.js"></script>
+<script src="../resources/js/directives/modal-diretiva.js"></script>
 
 <script src="../resources/bs-binary-admin/assets/js/jquery-1.10.2.js"></script>
 <script src="../resources/bs-binary-admin/assets/js/bootstrap.min.js"></script>

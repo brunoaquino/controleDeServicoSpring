@@ -7,4 +7,6 @@ import br.com.cs.mvc.model.Usuario;
 public interface UsuarioRepository extends Repositorio{
 
 	public List<Usuario> getAllUsers();
+
+	public Usuario getUsuarioPeloLoginESenha(Usuario usuario);
 }

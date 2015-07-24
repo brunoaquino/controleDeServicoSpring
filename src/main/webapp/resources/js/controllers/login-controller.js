@@ -1,21 +1,28 @@
-angular.module('csAdmin').controller( 'LoginController', function($scope, $http) {
+var modulo = angular.module('csAdmin', []);
+
+modulo.controller( 'LoginController', function($scope, $http) {
 	
-	$scope.eventos = {};
 	
-	var obj = {
-		email : "bruno.aquino",
-		senha : "020893"
-	}
+	$scope.showModal = false;
+    $scope.toggleModal = function(){
+        $scope.showModal = !$scope.showModal;
+    };
 	
-    $scope.eventos.Autenticar = function()
+    $scope.autenticar = function()
     { 
-		call('http://localhost:8080/controleDeServico/rest/home/index', obj)
-		.success(function(retorno){
-			$scope.login = retorno.email;
-			$scope.senha = retorno.senha;
-		})
-		.error(function(msg){
-			alert(msg.statusText);
+    	var obj = {
+    			email : $scope.login,
+    			senha : $scope.senha
+    		}
+    	
+		call('http://localhost:8080/controleDeServico/rest/autenticacao/autentica', obj)
+			.success(function(retorno){
+				window.location = "http://localhost:8080/controleDeServico/views/index.jsp";
+			})
+			.error(function(msg){
+				if(msg.responseText != undefined){
+					alert(JSON.parse(msg.responseText).mensagemDeErro);
+				}
 		});
     }
 	
