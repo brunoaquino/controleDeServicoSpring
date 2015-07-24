@@ -50,22 +50,22 @@
 							<hr></hr>
 							Não registrado ? 
 							<a href="registeration.html">Click aqui </a>
-							<button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
-							<div ng-controller="modalController">
-								<ng-Modal title="Login form" visible="modaltest">
-								    <form role="form">
-								      <div class="form-group">
-								        <label for="email">Email address</label>
-								        <input type="email" class="form-control" id="email" placeholder="Enter email" />
-								      </div>
-								      <div class="form-group">
-								        <label for="password">Password</label>
-								        <input type="password" class="form-control" id="password" placeholder="Password" />
-								      </div>
-								      <button type="submit" class="btn btn-default">Submit</button>
-								    </form>
-								 </ng-Modal>
-							</div>
+<!-- 							<button ng-click="toggleModal()" class="btn btn-default">Open modal</button> -->
+<!-- 							<div ng-controller="modalController"> -->
+<!-- 								<ng-Modal title="Login form" visible="modaltest"> -->
+<!-- 								    <form role="form"> -->
+<!-- 								      <div class="form-group"> -->
+<!-- 								        <label for="email">Email address</label> -->
+<!-- 								        <input type="email" class="form-control" id="email" placeholder="Enter email" /> -->
+<!-- 								      </div> -->
+<!-- 								      <div class="form-group"> -->
+<!-- 								        <label for="password">Password</label> -->
+<!-- 								        <input type="password" class="form-control" id="password" placeholder="Password" /> -->
+<!-- 								      </div> -->
+<!-- 								      <button type="submit" class="btn btn-default">Submit</button> -->
+<!-- 								    </form> -->
+<!-- 								 </ng-Modal> -->
+<!-- 							</div> -->
 						</form>
 					</div>
 				</div>
