@@ -1,4 +1,4 @@
-var modulo = angular.module('csAdmin', ['minhasDiretivas']);
+var modulo = angular.module('csAdmin', ['minhasDiretivas','ngAnimate']);
 
 var menuItens = [
               	{
@@ -34,3 +34,21 @@ var menuItens = [
               		nome:'Forms'
               	}
              ];
+
+//.config(function($routeProvider, $locationProvider) {
+//	
+//	$locationProvider.html5Mode({
+//		  enabled: true,
+//		  requireBase: false
+//		});
+//
+//	$locationProvider.html5Mode(true);
+//
+//	$routeProvider.when('/views/login.jsp', {
+//		templateUrl: 'controleDeServico/views/teste.jsp',
+//		controller: 'IndexController'
+//	});
+//
+//	$routeProvider.otherwise({redirectTo: 'controleDeServico/views/login.jsp'});
+//
+//});

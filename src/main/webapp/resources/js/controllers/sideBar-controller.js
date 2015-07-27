@@ -1,7 +1,7 @@
 modulo.controller('SideBarController', function($scope, $http) {
 	$scope.imgPerfil = "../resources/img/find_user.png";
 	
-	 $scope.teste = function(menu,itemSelecionado){
+	 $scope.ativaItem = function(menu,itemSelecionado){
 		 for(var i = 0; i < menu.length; i++) {
 			 menuItem = menu[i];
 			 menuItem.ativo = '';

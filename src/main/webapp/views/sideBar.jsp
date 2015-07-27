@@ -5,7 +5,7 @@
 				<img ng-src="{{imgPerfil}}" class="user-image img-responsive"/>
 			</li>
 			
-			<li ng-repeat="item in menu" ng-click="teste(menu,item)";>
+			<li ng-repeat="item in menu" ng-click="ativaItem(menu,item)";>
 				<a class="{{item.ativo}}">
 					<i class="{{item.imgClass}}"></i>{{item.nome}}
 				</a>

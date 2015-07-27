@@ -49,7 +49,9 @@
 							<a class="btn btn-primary" ng-click="autenticar(usuario)">Entrar</a>
 							<hr></hr>
 							Não registrado ? 
-							<a href="registeration.html">Click aqui </a>
+							<a href="teste.jsp">Click aqui </a>
+							
+							 <ng-view></ng-view>
 						</form>
 					</div>
 				</div>

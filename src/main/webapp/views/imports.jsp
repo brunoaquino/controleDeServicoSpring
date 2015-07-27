@@ -15,6 +15,9 @@
 
 <script src="../resources/js/lib/angular.min.js"></script>
 <script src="../resources/js/lib/angular-animate.min.js"></script>
+<!-- <script src="../resources/js/lib/angular-route.min.js"></script> -->
+
+	
 <script src="../resources/js/minhasLibs/request.js"></script>
 <script src="../resources/js/directives/minhas-diretivas.js"></script>
 <script src="../resources/js/directives/modal-diretiva.js"></script>

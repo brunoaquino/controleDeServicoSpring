@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" style="visibility: {{visibilidade}};">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Form Element Examples
