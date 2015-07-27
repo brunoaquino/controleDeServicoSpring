@@ -14,6 +14,7 @@ public class Usuario {
 
 	private Long id;
 	private String email;
+	private String login;
 	private String senha;
 	private boolean ativo;
 
@@ -38,7 +39,7 @@ public class Usuario {
 		this.email = email;
 	}
 
-	@Column(name = "text_senha")
+	@Column(name = "text_senha", length = 12)
 	public String getSenha() {
 		return senha;
 	}
@@ -55,4 +56,14 @@ public class Usuario {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+
+	@Column(name = "text_login")
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 }

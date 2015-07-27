@@ -29,13 +29,13 @@
 								<span class="input-group-addon">
 									<i class="fa fa-tag"></i>
 								</span>
-								<input class="form-control" ng-model="login">
+								<input class="form-control" ng-model="usuario.login">
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon">
 									<i class="fa fa-lock"></i>
 								</span>
-								<input type="password" class="form-control" ng-model="senha">
+								<input type="password" class="form-control" ng-model="usuario.senha">
 								
 							</div>
 							<div class="form-group">
@@ -46,26 +46,10 @@
 									<a href="#"> Esqueceu sua senha? </a>
 								</span>
 							</div>
-							<a class="btn btn-primary" ng-click="autenticar()">Entrar</a>
+							<a class="btn btn-primary" ng-click="autenticar(usuario)">Entrar</a>
 							<hr></hr>
 							Não registrado ? 
 							<a href="registeration.html">Click aqui </a>
-<!-- 							<button ng-click="toggleModal()" class="btn btn-default">Open modal</button> -->
-<!-- 							<div ng-controller="modalController"> -->
-<!-- 								<ng-Modal title="Login form" visible="modaltest"> -->
-<!-- 								    <form role="form"> -->
-<!-- 								      <div class="form-group"> -->
-<!-- 								        <label for="email">Email address</label> -->
-<!-- 								        <input type="email" class="form-control" id="email" placeholder="Enter email" /> -->
-<!-- 								      </div> -->
-<!-- 								      <div class="form-group"> -->
-<!-- 								        <label for="password">Password</label> -->
-<!-- 								        <input type="password" class="form-control" id="password" placeholder="Password" /> -->
-<!-- 								      </div> -->
-<!-- 								      <button type="submit" class="btn btn-default">Submit</button> -->
-<!-- 								    </form> -->
-<!-- 								 </ng-Modal> -->
-<!-- 							</div> -->
 						</form>
 					</div>
 				</div>

@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import br.com.cs.mvc.model.tipos.Estado;
+import br.com.cs.mvc.tipos.Estado;
 
 @Entity
 @Table(name = "funcionario")

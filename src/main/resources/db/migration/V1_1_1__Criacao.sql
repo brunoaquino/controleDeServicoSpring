@@ -121,6 +121,7 @@ COLLATE = utf8_general_ci;
 CREATE TABLE IF NOT EXISTS `db_controle_servico`.`usuario` (
   `usuario_id` INT(11) NOT NULL,
   `text_email` VARCHAR(200) NOT NULL,
+  `text_login` VARCHAR(200) NOT NULL,
   `text_senha` VARCHAR(12) NOT NULL,
   `bool_ativo` TINYINT(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`usuario_id`))

@@ -14,26 +14,29 @@ import br.com.cs.mvc.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService extends ServicoBase {
-	
-	@Resource(name="usuarioRepository")
+
+	@Resource(name = "usuarioRepository")
 	public UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	Autenticador autenticador;
-	
+
 	public List<Usuario> getAllUsers() {
 		return usuarioRepository.getAllUsers();
 	}
 
 	public Usuario autenticaUsuario(Usuario usuario) {
 		Usuario usuarioAutenticado = usuarioRepository.getUsuarioPeloLoginESenha(usuario);
-		if(usuarioAutenticado == null){
+		if (usuarioAutenticado == null) {
 			throw new ExcecaoUsuarioNaoAutenticado("Login ou Senha inválido");
-		}else{
+		} else {
 			autenticador.autenticaUsuarioNaSessao(usuarioAutenticado);
 			return usuarioAutenticado;
 		}
 	}
-	
+
+	public void logout() {
+		autenticador.removeUsuarioNaSessao();
+	}
 
 }

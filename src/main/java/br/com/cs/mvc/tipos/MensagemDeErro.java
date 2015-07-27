@@ -1,4 +1,4 @@
-package br.com.cs.mvc.model.tipos;
+package br.com.cs.mvc.tipos;
 
 /**
  * @author jsilva

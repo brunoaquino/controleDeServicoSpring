@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-import br.com.cs.mvc.model.tipos.PrecisaoDoTempo;
+import br.com.cs.mvc.tipos.PrecisaoDoTempo;
 
 public class UtilData {
 

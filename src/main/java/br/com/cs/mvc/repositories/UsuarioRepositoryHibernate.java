@@ -10,8 +10,7 @@ import org.springframework.stereotype.Repository;
 import br.com.cs.mvc.model.Usuario;
 
 @Repository
-public class UsuarioRepositoryHibernate extends RepositoryBase implements
-		UsuarioRepository {
+public class UsuarioRepositoryHibernate extends RepositoryBase implements UsuarioRepository {
 
 	@Override
 	public List<Usuario> getAllUsers() {
@@ -25,7 +24,7 @@ public class UsuarioRepositoryHibernate extends RepositoryBase implements
 		Session sessao = getSession();
 
 		Criteria criteria = sessao.createCriteria(Usuario.class);
-		criteria.add(Restrictions.eq("email", usuario.getEmail()));
+		criteria.add(Restrictions.eq("login", usuario.getLogin()));
 		criteria.add(Restrictions.eq("senha", usuario.getSenha()));
 
 		Usuario usuarioAutenticado = (Usuario) criteria.uniqueResult();
@@ -33,5 +32,5 @@ public class UsuarioRepositoryHibernate extends RepositoryBase implements
 
 		return usuarioAutenticado;
 	}
-	
+
 }

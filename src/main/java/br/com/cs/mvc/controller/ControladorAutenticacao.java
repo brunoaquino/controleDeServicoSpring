@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cs.mvc.exeptions.ExcecaoInfraestrutura;
 import br.com.cs.mvc.model.Usuario;
 import br.com.cs.mvc.service.UsuarioService;
 
@@ -19,8 +18,13 @@ public class ControladorAutenticacao extends ControladorBase {
 	
 	@RequestMapping(value = "/autentica", method = RequestMethod.POST)
 	@Transactional
-	public Usuario index(Usuario usuario) throws ExcecaoInfraestrutura {
+	public Usuario autentica(Usuario usuario) {
 		service.autenticaUsuario(usuario);
 		return usuario;
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public boolean logout() {
+		service.logout();
+		return true;
 	}
 }
