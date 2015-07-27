@@ -7,6 +7,6 @@
 			</div>
 		</div>
 		<hr />
-		<div class="slide-animate" ng-include="teste.jsp"></div>
+		<div id="testes"></div>
 	</div>
 </div>
