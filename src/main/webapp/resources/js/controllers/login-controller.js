@@ -7,10 +7,8 @@ modulo.controller( 'LoginController', function($scope, $http) {
 				window.location = "http://localhost:8080/controleDeServico/views/index.jsp";
 			})
 			.error(function(msg){
-				if(msg.responseText != undefined){
-					alert(JSON.parse(msg.responseText).mensagemDeErro);
-			}
-		});
+				trataMensagemDeErro(msg);
+			});
     }
 	
 });

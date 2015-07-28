@@ -18,3 +18,8 @@ var menuItens = [{
               		titulo:'UI Elements',
 					subTitulo:''
               	}];
+
+function trataMensagemDeErro(msg){
+if(msg.responseText != undefined){
+	alert(JSON.parse(msg.responseText).mensagemDeErro);
+}}

@@ -35,7 +35,6 @@ public class FiltroRequisicao implements Filter {
 			chain.doFilter(request, resp);
 			return;
 		}
-		
 		if (!urlDeAcesso.contains("login.jsp") && !isUsuarioLogado(req)) {
 			resp.sendRedirect("login.jsp");
 			return;

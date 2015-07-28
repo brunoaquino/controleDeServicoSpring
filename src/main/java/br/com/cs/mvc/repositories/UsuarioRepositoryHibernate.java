@@ -13,11 +13,9 @@ import br.com.cs.mvc.model.Usuario;
 public class UsuarioRepositoryHibernate extends RepositoryBase implements UsuarioRepository {
 
 	@Override
-	public List<Usuario> getAllUsers() {
+	public List<Usuario> getUsuarios() {
 		return this.hibernateTemplate.loadAll(Usuario.class);
 	}
-
-	// não esquecer de fechar a sessao sempre que fiser alguma transacao
 
 	@Override
 	public Usuario getUsuarioPeloLoginESenha(Usuario usuario) {
@@ -33,4 +31,44 @@ public class UsuarioRepositoryHibernate extends RepositoryBase implements Usuari
 		return usuarioAutenticado;
 	}
 
+	@Override
+	public void salvar(Usuario usuario) {
+		this.hibernateTemplate.save(usuario);
+	}
+
+	@Override
+	public void atualiza(Usuario usuario) {
+		this.hibernateTemplate.update(usuario);
+	}
+
+	@Override
+	public void exclui(Usuario usuario) {
+		this.hibernateTemplate.delete(usuario);
+	}
+
+	@Override
+	public Usuario getUsuarioPorEmail(String email) {
+		Session sessao = getSession();
+
+		Criteria criteria = sessao.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("email", email));
+
+		Usuario usuarioAutenticado = (Usuario) criteria.uniqueResult();
+		sessao.close();
+
+		return usuarioAutenticado;
+	}
+
+	@Override
+	public Usuario getUsuarioPorLogin(String login) {
+		Session sessao = getSession();
+
+		Criteria criteria = sessao.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("login", login));
+
+		Usuario usuarioAutenticado = (Usuario) criteria.uniqueResult();
+		sessao.close();
+
+		return usuarioAutenticado;
+	}
 }
