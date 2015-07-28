@@ -7,6 +7,6 @@
 			</div>
 		</div>
 		<hr />
-		<%@include file="teste.jsp" %>
+		<%@include file="cadastros.jsp" %>
 	</div>
 </div>

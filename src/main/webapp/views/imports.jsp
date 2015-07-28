@@ -27,8 +27,9 @@
 <script src="../resources/js/controllers/login-controller.js"></script>
 <script src="../resources/js/controllers/index-controller.js"></script>
 <script src="../resources/js/controllers/navBar-controller.js"></script>
-<script src="../resources/js/controllers/sideBar-controller.js"></script>
 <script src="../resources/js/controllers/container-controller.js"></script>
+<script src="../resources/js/controllers/sideBar-controller.js"></script>
+<script src="../resources/js/controllers/cadastroDeUsuarioController-controller.js"></script>
 
 
 <script src="../resources/bs-binary-admin/assets/js/jquery-1.10.2.js"></script>

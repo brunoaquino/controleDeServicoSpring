@@ -7,7 +7,7 @@
 			
 			<li ng-repeat="item in menu" ng-click="ativaItem(menu,item)";>
 				<a class="{{item.ativo}}">
-					<i class="{{item.imgClass}}"></i>{{item.nome}}
+					<i class="{{item.imgClass}}"></i>{{item.titulo}}
 				</a>
 			</li>
 		</ul>

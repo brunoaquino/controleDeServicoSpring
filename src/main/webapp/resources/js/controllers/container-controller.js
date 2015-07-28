@@ -1,17 +1,24 @@
 var selecionaItemMenu;
 
-modulo.controller('ContainerController', function($scope, $http, $compile) {
-
+modulo.controller('ContainerController', function($scope, $http) {
+	
+	$scope.cadastroVisibilidade = 'hidden';
+	
 	selecionaItemMenu = function(item) {
-		$scope.labelTituloDoFormulario = item.nome;
-		$scope.labelSubTituloDoFormulario = 'Teste de subtitulo'
-			
-		if(item.nome=="Dashboard"){
-			$scope.visibilidade = 'show'
+		$scope.labelTituloDoFormulario = item.titulo;
+		$scope.labelSubTituloDoFormulario = item.subTitulo;
+		
+		if(item.titulo=='Cadastros'){
+			$scope.cadastroVisibilidade = 'visible';
 		}else{
-			$scope.visibilidade = 'hidden'
+			$scope.cadastroVisibilidade = 'hidden';
 		}
 		
+			
 	};
-
+	selecionaItemMenu(menuItens[0]);
 });
+
+
+
+
