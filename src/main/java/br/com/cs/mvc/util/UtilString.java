@@ -1,9 +1,5 @@
 package br.com.cs.mvc.util;
 
-/**
- * @author jsilva
- * 
- */
 public class UtilString {
 	public static boolean isVazio(String string) {
 		return string == null || string.trim().equals("");
