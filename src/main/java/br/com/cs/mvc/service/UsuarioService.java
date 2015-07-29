@@ -23,8 +23,7 @@ public class UsuarioService extends ServicoBase {
 	Autenticador autenticador;
 
 	public Usuario autenticaUsuario(Usuario usuario) {
-		Usuario usuarioAutenticado = usuarioRepository
-				.getUsuarioPeloLoginESenha(usuario);
+		Usuario usuarioAutenticado = usuarioRepository.getUsuarioPeloLoginESenha(usuario);
 		if (usuarioAutenticado == null) {
 			throw new ExcecaoUsuarioNaoAutenticado("Login ou Senha inválido");
 		} else {
@@ -39,39 +38,41 @@ public class UsuarioService extends ServicoBase {
 
 	public void salva(Usuario usuario) {
 		validaUsuario(usuario);
-		
-		usuario.setAtivo(true);
-		usuarioRepository.salvar(usuario);
-		
+
+		if (usuario.getId() == null) {
+			usuario.setAtivo(true);
+		}
+		usuarioRepository.salva(usuario);
 	}
-	
+
+	public void atualiza(Usuario usuario) {
+//		validaUsuario(usuario); TODO validar Atualiza
+
+		usuarioRepository.atualiza(usuario);
+	}
+
 	public List<Usuario> getUsuarios() {
 		return usuarioRepository.getUsuarios();
 	}
 
 	private void validaUsuario(Usuario usuario) {
 		Usuario usuarioEncontrado;
-		
-		usuarioEncontrado = usuarioRepository.getUsuarioPorEmail(usuario.getEmail());
-		
-		if(usuarioEncontrado != null){
-			throw new MensagemDeErroExeption("Usuário com o email: '"+usuario.getEmail()+"' já foi cadastrado");
-		}
-		
-		usuarioEncontrado = usuarioRepository.getUsuarioPorLogin(usuario.getLogin());
-		
-		if(usuarioEncontrado != null){
-			throw new MensagemDeErroExeption("Usuário com o login: '"+usuario.getLogin()+"' já foi cadastrado");
-		}
-	}
 
-	public void atualiza(Usuario usuario) {
-		validaUsuario(usuario);
-		usuarioRepository.salvar(usuario);
+		usuarioEncontrado = usuarioRepository.getUsuarioPorEmail(usuario.getEmail());
+
+		if (usuarioEncontrado != null) {
+			throw new MensagemDeErroExeption("Usuário com o email: '" + usuario.getEmail() + "' já foi cadastrado");
+		}
+
+		usuarioEncontrado = usuarioRepository.getUsuarioPorLogin(usuario.getLogin());
+
+		if (usuarioEncontrado != null) {
+			throw new MensagemDeErroExeption("Usuário com o login: '" + usuario.getLogin() + "' já foi cadastrado");
+		}
 	}
 
 	public void delete(Usuario usuario) {
-		usuarioRepository.salvar(usuario);
+		usuarioRepository.exclui(usuario);
 	}
 
 }

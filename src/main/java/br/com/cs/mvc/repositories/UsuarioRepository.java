@@ -10,7 +10,7 @@ public interface UsuarioRepository extends Repositorio{
 
 	public Usuario getUsuarioPeloLoginESenha(Usuario usuario);
 
-	public void salvar(Usuario usuario);
+	public void salva(Usuario usuario);
 
 	public void atualiza(Usuario usuario);
 
@@ -19,4 +19,8 @@ public interface UsuarioRepository extends Repositorio{
 	public Usuario getUsuarioPorEmail(String email);
 
 	public Usuario getUsuarioPorLogin(String login);
+
+	public List<Usuario> getUsuariosPorEmail(String email);
+
+	public List<Usuario> getUsuariosPorLogin(String login);
 }

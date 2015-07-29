@@ -32,7 +32,7 @@ public class UsuarioRepositoryHibernate extends RepositoryBase implements Usuari
 	}
 
 	@Override
-	public void salvar(Usuario usuario) {
+	public void salva(Usuario usuario) {
 		this.hibernateTemplate.save(usuario);
 	}
 
@@ -58,6 +58,18 @@ public class UsuarioRepositoryHibernate extends RepositoryBase implements Usuari
 
 		return usuarioAutenticado;
 	}
+	@Override
+	public List<Usuario> getUsuariosPorEmail(String email) {
+		Session sessao = getSession();
+		
+		Criteria criteria = sessao.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("email", email));
+		
+		List<Usuario> listaDeUsuarios = (List<Usuario>) criteria.list();
+		sessao.close();
+		
+		return listaDeUsuarios;
+	}
 
 	@Override
 	public Usuario getUsuarioPorLogin(String login) {
@@ -70,5 +82,18 @@ public class UsuarioRepositoryHibernate extends RepositoryBase implements Usuari
 		sessao.close();
 
 		return usuarioAutenticado;
+	}
+	
+	@Override
+	public List<Usuario> getUsuariosPorLogin(String login) {
+		Session sessao = getSession();
+		
+		Criteria criteria = sessao.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("login", login));
+		
+		List<Usuario> listaDeUsuarios = (List<Usuario>) criteria.list();
+		sessao.close();
+		
+		return listaDeUsuarios;
 	}
 }

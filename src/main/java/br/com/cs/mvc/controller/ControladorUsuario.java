@@ -38,7 +38,7 @@ public class ControladorUsuario extends ControladorBase {
 		service.delete(usuario);
 		return usuario;
 	}
-	
+
 	@RequestMapping(value = "/getUsuarios", method = RequestMethod.POST)
 	@Transactional
 	public List<Usuario> getUsuarios() {

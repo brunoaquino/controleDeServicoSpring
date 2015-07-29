@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../resources/bs-binary-admin/assets/css/custom.css" type="text/css"></link>
 <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans' type="text/css"></link>
 <link href="../resources/bs-binary-admin/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+<link href="../resources/bs-binary-admin/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
 
 
 <script src="../resources/js/lib/angular.min.js"></script>
@@ -19,6 +20,7 @@
 
 	
 <script src="../resources/js/minhasLibs/request.js"></script>
+<script src="../resources/js/minhasLibs/tableFormatters.js"></script>
 <script src="../resources/js/directives/minhas-diretivas.js"></script>
 <script src="../resources/js/directives/modal-diretiva.js"></script>
 
@@ -37,6 +39,13 @@
 <script src="../resources/bs-binary-admin/assets/js/jquery.metisMenu.js"></script>
 <script src="../resources/bs-binary-admin/assets/js/morris/raphael-2.1.0.min.js"></script>
 <script src="../resources/bs-binary-admin/assets/js/morris/morris.js"></script>
+<!-- <script type="text/javascript" src="../resources/bs-binary-admin/assets/js/dataTables/jquery.dataTables.js"></script> -->
+<!-- <script type="text/javascript" src="../resources/bs-binary-admin/assets/js/dataTables/dataTables.bootstrap.js"></script> -->
+
+<!--Bootstrap Table-->
+<link href="../resources/bs-binary-admin/assets/js/bootstrapTable/bootstrap-table.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../resources/bs-binary-admin/assets/js/bootstrapTable/bootstrap-table.js"></script>
+<script type="text/javascript" src="../resources/bs-binary-admin/assets/js/bootstrapTable/locale/bootstrap-table-pt-BR.js"></script>
+
+
 <script src="../resources/bs-binary-admin/assets/js/custom.js"></script>
-
-
