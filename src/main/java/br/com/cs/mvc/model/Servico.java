@@ -1,21 +1,16 @@
 package br.com.cs.mvc.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "servico")
-public class Servico implements Serializable, Cloneable {
-
-	private static final long serialVersionUID = 1L;
+public class Servico {
 
 	private int id;
 	private double preco;
@@ -72,12 +67,4 @@ public class Servico implements Serializable, Cloneable {
 	// this.servicos = servicos;
 	// }
 
-	@Transient
-	public Servico getClone() {
-		try {
-			return (Servico) super.clone();
-		} catch (CloneNotSupportedException e) {
-			return this;
-		}
-	}
 }

@@ -47,7 +47,7 @@ function buscaUsuarios() {
 }
 
 modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
-	$("#divCadastro").hide("slow","swing");
+	$("#divCadastro").hide();
 	
 	$("#btnSalvar").show();
 	$("#btnAlterar").hide();

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans' type="text/css"></link>
 <link href="../resources/bs-binary-admin/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
 <link href="../resources/bs-binary-admin/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="../resources/css/csAdmin.css" type="text/css"></link>
 
 
 <script src="../resources/js/lib/angular.min.js"></script>
@@ -32,20 +33,24 @@
 <script src="../resources/js/controllers/container-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/sideBar-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/cadastroDeUsuario-controller.js" charset="utf-8"></script>
+<script src="../resources/js/controllers/cadastroDeServico-controller.js" charset="utf-8"></script>
 
 
-<script src="../resources/bs-binary-admin/assets/js/jquery-1.10.2.js"></script>
-<script src="../resources/bs-binary-admin/assets/js/bootstrap.min.js"></script>
-<script src="../resources/bs-binary-admin/assets/js/jquery.metisMenu.js"></script>
-<script src="../resources/bs-binary-admin/assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="../resources/bs-binary-admin/assets/js/morris/morris.js"></script>
+<script src="../resources/bs-binary-admin/assets/js/jquery-1.10.2.js" charset="utf-8"></script>
+<script src="../resources/bs-binary-admin/assets/js/bootstrap.min.js" charset="utf-8"></script>
+<script src="../resources/bs-binary-admin/assets/js/jquery.metisMenu.js" charset="utf-8"></script>
+<script src="../resources/bs-binary-admin/assets/js/morris/raphael-2.1.0.min.js" charset="utf-8"></script>
+<script src="../resources/bs-binary-admin/assets/js/morris/morris.js" charset="utf-8"></script>
 <!-- <script type="text/javascript" src="../resources/bs-binary-admin/assets/js/dataTables/jquery.dataTables.js"></script> -->
 <!-- <script type="text/javascript" src="../resources/bs-binary-admin/assets/js/dataTables/dataTables.bootstrap.js"></script> -->
 
+<script src="../resources/js/lib/jquery.maskMoney.min.js" charset="utf-8"></script>
+<script src="../resources/js/lib/jquery.mask.min.js" charset="utf-8"></script>
+
 <!--Bootstrap Table-->
 <link href="../resources/bs-binary-admin/assets/js/bootstrapTable/bootstrap-table.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="../resources/bs-binary-admin/assets/js/bootstrapTable/bootstrap-table.js"></script>
-<script type="text/javascript" src="../resources/bs-binary-admin/assets/js/bootstrapTable/locale/bootstrap-table-pt-BR.js"></script>
+<script type="text/javascript" src="../resources/bs-binary-admin/assets/js/bootstrapTable/bootstrap-table.js" charset="utf-8"></script>
+<script type="text/javascript" src="../resources/bs-binary-admin/assets/js/bootstrapTable/locale/bootstrap-table-pt-BR.js" charset="utf-8"></script>
 
 
-<script src="../resources/bs-binary-admin/assets/js/custom.js"></script>
+<script src="../resources/bs-binary-admin/assets/js/custom.js" charset="utf-8"></script>

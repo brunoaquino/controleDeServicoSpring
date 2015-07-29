@@ -10,25 +10,25 @@
                 	<div class="row">
 	                	<div class="col-md-6">
 		                	<div class="form-group">
-		                       	<label class="control-label" for="inputEmail">E-mail</label>
+		                       	<label class="control-label" for="inputEmail">E-mail:</label><span class="obrigatorio">*</span>
 		                        <input class="form-control" name="email" id="inputEmail" ng-model="usuario.email"/>
 		                    </div>
 	                	</div>
                 	</div>
                 	<div class="row">
-	                	<div class="form-group col-md-4">
-	                        <label class="control-label" for="inputLogin">Login</label>
+	                	<div class="form-group col-md-2">
+	                        <label class="control-label" for="inputLogin">Login:</label><span class="obrigatorio">*</span>
 	                        <input class="form-control" id="inputLogin" ng-model="usuario.login" required name="login" ng-maxlength='200'/>
 	                    </div>
-	                	<div class="form-group col-md-4">
-	                        <label class="control-label" for="inputSenha">Senha</label>
+	                	<div class="form-group col-md-2">
+	                        <label class="control-label" for="inputSenha">Senha:</label><span class="obrigatorio">*</span>
 	                        <input class="form-control" type="password" id="inputSenha" ng-model="usuario.senha" required name="senha" ng-minlength='4' ng-maxlength='12'/>
 	                    </div>
                 	</div>
 				</div>
 			</div>
 		</div>
-		<div class="panel-footer">
+		<div class="panel-footer" style="text-align: right;">
 	        <button type="button" class="btn btn-success" ng-click="salvar(usuario)" id="btnSalvar">salvar</button>
 	        <button type="button" class="btn btn-success" ng-click="editar(usuario)" id="btnAlterar">Editar</button>
 	        <button type="button" class="btn btn-primary" ng-click="cancelar(usuario)">Cancelar</button>

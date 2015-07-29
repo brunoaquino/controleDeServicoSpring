@@ -37,7 +37,7 @@ public class UsuarioService extends ServicoBase {
 	}
 
 	public void salva(Usuario usuario) {
-		validaUsuario(usuario);
+		validaUsuarioSalvar(usuario);
 
 		if (usuario.getId() == null) {
 			usuario.setAtivo(true);
@@ -46,7 +46,7 @@ public class UsuarioService extends ServicoBase {
 	}
 
 	public void atualiza(Usuario usuario) {
-//		validaUsuario(usuario); TODO validar Atualiza
+		validaUsuarioAtualiza(usuario); 
 
 		usuarioRepository.atualiza(usuario);
 	}
@@ -55,7 +55,7 @@ public class UsuarioService extends ServicoBase {
 		return usuarioRepository.getUsuarios();
 	}
 
-	private void validaUsuario(Usuario usuario) {
+	private void validaUsuarioSalvar(Usuario usuario) {
 		Usuario usuarioEncontrado;
 
 		usuarioEncontrado = usuarioRepository.getUsuarioPorEmail(usuario.getEmail());
@@ -67,6 +67,21 @@ public class UsuarioService extends ServicoBase {
 		usuarioEncontrado = usuarioRepository.getUsuarioPorLogin(usuario.getLogin());
 
 		if (usuarioEncontrado != null) {
+			throw new MensagemDeErroExeption("Usuário com o login: '" + usuario.getLogin() + "' já foi cadastrado");
+		}
+	}
+	private void validaUsuarioAtualiza(Usuario usuario) {
+		List<Usuario> usuariosEncontrados;
+		
+		usuariosEncontrados = usuarioRepository.getUsuariosPorEmail(usuario.getEmail());
+		
+		if (usuariosEncontrados.size()>1) {
+			throw new MensagemDeErroExeption("Usuário com o email: '" + usuario.getEmail() + "' já foi cadastrado");
+		}
+		
+		usuariosEncontrados = usuarioRepository.getUsuariosPorLogin(usuario.getLogin());
+		
+		if (usuariosEncontrados.size()>1) {
 			throw new MensagemDeErroExeption("Usuário com o login: '" + usuario.getLogin() + "' já foi cadastrado");
 		}
 	}
