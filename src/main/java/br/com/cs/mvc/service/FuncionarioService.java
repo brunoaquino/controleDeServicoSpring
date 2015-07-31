@@ -12,7 +12,7 @@ import br.com.cs.mvc.repositories.FuncionarioRepository;
 @Service
 public class FuncionarioService extends ServicoBase {
 
-	@Resource(name = "servicoRepository")
+	@Resource(name = "FuncionarioRepository")
 	public FuncionarioRepository funcionarioRepository;
 
 	public void salva(Funcionario funcionario) {

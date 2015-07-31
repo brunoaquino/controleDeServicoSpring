@@ -34,6 +34,7 @@
 <script src="../resources/js/controllers/sideBar-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/cadastroDeUsuario-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/cadastroDeServico-controller.js" charset="utf-8"></script>
+<script src="../resources/js/controllers/cadastroDeFuncionario-controller.js" charset="utf-8"></script>
 
 
 <script src="../resources/bs-binary-admin/assets/js/jquery-1.10.2.js" charset="utf-8"></script>
@@ -41,8 +42,11 @@
 <script src="../resources/bs-binary-admin/assets/js/jquery.metisMenu.js" charset="utf-8"></script>
 <script src="../resources/bs-binary-admin/assets/js/morris/raphael-2.1.0.min.js" charset="utf-8"></script>
 <script src="../resources/bs-binary-admin/assets/js/morris/morris.js" charset="utf-8"></script>
-<!-- <script type="text/javascript" src="../resources/bs-binary-admin/assets/js/dataTables/jquery.dataTables.js"></script> -->
-<!-- <script type="text/javascript" src="../resources/bs-binary-admin/assets/js/dataTables/dataTables.bootstrap.js"></script> -->
+
+<link rel="stylesheet" href="../resources/css/bootstrap-3.3.4/datePicker/css/datepicker.css" type="text/css"></link>
+<link rel="stylesheet" href="../resources/css/bootstrap-3.3.4/datePicker/css/datepicker3.css" type="text/css"></link>
+<script src="../resources/css/bootstrap-3.3.4/datePicker/js/bootstrap-datepicker.js" charset="utf-8"></script>
+<script src="../resources/css/bootstrap-3.3.4/datePicker/js/locales/bootstrap-datepicker.pt-BR.js" charset="utf-8"></script>
 
 <script src="../resources/js/lib/jquery.maskMoney.min.js" charset="utf-8"></script>
 <script src="../resources/js/lib/jquery.mask.min.js" charset="utf-8"></script>

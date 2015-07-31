@@ -26,7 +26,7 @@ COLLATE = utf8_general_ci;
 CREATE TABLE IF NOT EXISTS `db_controle_servico`.`funcionario` (
   `funcionario_id` INT(11) NOT NULL,
   `text_nome` VARCHAR(200) NULL DEFAULT NULL,
-  `text_cpf_cnpj` VARCHAR(20) NULL DEFAULT NULL,
+  `text_cpf` VARCHAR(11) NULL DEFAULT NULL,
   `text_rg` VARCHAR(45) NULL DEFAULT NULL,
   `text_endereco` VARCHAR(100) NULL DEFAULT NULL,
   `text_cep` VARCHAR(45) NULL DEFAULT NULL,

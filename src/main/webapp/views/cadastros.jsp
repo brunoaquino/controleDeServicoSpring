@@ -1,4 +1,4 @@
-<div class="col-md-12" style="visibility: {{cadastroVisibilidade}};">
+<div class="col-md-12" id="cadastros">
 	<div class="tabbable">
 		<ul class="nav nav-tabs">
 		  <li class="active"><a href="#tab1" data-toggle="tab">Usuário</a></li>
@@ -14,10 +14,10 @@
 	       		<%@include file="cadastroDeServico.jsp" %>
 	      </div>
 	      <div class="tab-pane" id="tab3">
-	       		<%@include file="cadastroDeCliente.jsp" %>
+	       		<%@include file="cadastroDeFuncionario.jsp" %>
 	      </div>
 	      <div class="tab-pane" id="tab4">
-	       		<%@include file="cadastroDeFuncionario.jsp" %>
+	       		<%@include file="cadastroDeCliente.jsp" %>
 	      </div>
 	    </div>
 	</div>

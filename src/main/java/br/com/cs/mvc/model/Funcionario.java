@@ -32,15 +32,15 @@ public class Funcionario implements Serializable {
 
 	private int id;
 	private String nome;
-	private String cpfCnpj;
+	private String cpf;
 	private String rg;
+	private String telefone;
 	private String endereco;
 	private String cep;
 	private Estado estado;
 	private String bairro;
 	private String email;
 	private String observacoes;
-	private String telefone;
 	private Date dataDeCadastro;
 	private Date dataDeAlteracao;
 	private Date dataDeNascimento;
@@ -67,13 +67,13 @@ public class Funcionario implements Serializable {
 		this.nome = nome;
 	}
 
-	@Column(name = "text_cpf_cnpj")
-	public String getCpfCnpj() {
-		return cpfCnpj;
+	@Column(name = "text_cpf")
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCpfCnpj(String cpfCnpj) {
-		this.cpfCnpj = cpfCnpj;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	@Column(name = "text_rg")

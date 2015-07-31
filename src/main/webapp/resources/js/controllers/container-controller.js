@@ -9,9 +9,9 @@ modulo.controller('ContainerController', function($scope, $http) {
 		$scope.labelSubTituloDoFormulario = item.subTitulo;
 		
 		if(item.titulo=='Cadastros'){
-			$scope.cadastroVisibilidade = 'visible';
+			$("#cadastros").show();
 		}else{
-			$scope.cadastroVisibilidade = 'hidden';
+			$("#cadastros").hide();
 		}
 		
 			
