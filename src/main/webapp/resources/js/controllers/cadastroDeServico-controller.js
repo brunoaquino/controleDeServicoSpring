@@ -1,17 +1,22 @@
 var selecionaItemMenu;
 var listaDeServicos = [];
-var table;
+var tableServico;
 var servicoSendoEditado;
 
 function atualizaTable(){
 	buscaServicos();
-	table.bootstrapTable('load', listaDeServicos);
+	tableServico.bootstrapTable('load', listaDeServicos);
 }
 
 function carregaServico(servico){
 	if(servico!=undefined){
 		$("#inputNomeServico").val(servico.nome);
-		$("#inputPreco").val(servico.preco);
+		if(!(servico.preco.toString().indexOf(".") > -1)){
+			$("#inputPreco").val(servico.preco + ".00");
+		}else{
+			$("#inputPreco").maskMoney('mask', servico.preco);
+		}
+		$("#inputPreco").maskMoney('mask');
 		$("#inputDescricao").val(servico.descricao);
 	}
 	$("#btnSalvarServico").hide();
@@ -55,6 +60,7 @@ modulo.controller('CadastroDeServicoController', function($scope, $http) {
 	
 	$("#inputPreco").maskMoney({
 		showSymbol:true,
+		prefix:'R$ ',
 		symbol : 'R$ ',
 		thousands : '.',
 		decimal : ','
@@ -65,7 +71,8 @@ modulo.controller('CadastroDeServicoController', function($scope, $http) {
 	ativaTable();
 	
 	$scope.salvar = function(servico) {
-		servico.preco = $("#inputPreco").val().replace(",",".");
+		servico.preco = $('#inputPreco').maskMoney('unmasked')[0]; 
+		
 		if (isDadosValidos(servico)) {
 			call('http://localhost:8080/controleDeServico/rest/servico/salva',servico).success(function(retorno) {
 				limpaFormulario();
@@ -78,17 +85,10 @@ modulo.controller('CadastroDeServicoController', function($scope, $http) {
 			});
 		}
 	}
-	$scope.editar = function(servico) {
-		servico.preco = $("#inputPreco").val().replace(",",".");
-		if(servico.nome!=undefined){
-			servicoSendoEditado.nome = servico.nome;
-		}
-		if(servico.preco!=undefined){
-			servicoSendoEditado.preco = servico.preco;
-		}
-		if(servico.descricao!=undefined){
-			servicoSendoEditado.descricao = servico.descricao;
-		}
+	$scope.editar = function() {
+			servicoSendoEditado.nome = $('#inputNomeServico').val();
+			servicoSendoEditado.preco = $('#inputPreco').maskMoney('unmasked')[0];
+			servicoSendoEditado.descricao = $('#inputDescricao').val();
 		
 		if (isDadosValidos(servicoSendoEditado)) {
 			call('http://localhost:8080/controleDeServico/rest/servico/atualiza',servicoSendoEditado).success(function(retorno) {
@@ -138,8 +138,8 @@ modulo.controller('CadastroDeServicoController', function($scope, $http) {
 	};
 
 	function ativaTable() {
-		table = $('#tableServico');
-		table.bootstrapTable({
+		tableServico = $('#tableServico');
+		tableServico.bootstrapTable({
 				data : listaDeServicos,
 				classes : "table table-hover table-condensed table-hover",
 				cache : false,

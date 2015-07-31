@@ -3,8 +3,8 @@ package br.com.cs.mvc.conf;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.cs.mvc.repositories.FabricaDeRepositorios;
-import br.com.cs.mvc.repositories.FabricaDeRepositoriosFactory;
+import br.com.cs.mvc.repositories.FuncionarioRepository;
+import br.com.cs.mvc.repositories.FuncionarioRepositoryHibernate;
 import br.com.cs.mvc.repositories.ServicoRepository;
 import br.com.cs.mvc.repositories.ServicoRepositoryHibernate;
 import br.com.cs.mvc.repositories.UsuarioRepository;
@@ -23,9 +23,9 @@ public class RepositoriosConfiguration {
 		return new ServicoRepositoryHibernate();
 	}
 
-	@Bean(name = "fabricaDeRepositorios")
-	public FabricaDeRepositorios getFabricaDeRepositorios() {
-		return new FabricaDeRepositoriosFactory();
+	@Bean(name = "FuncionarioRepository")
+	public FuncionarioRepository getFuncionarioRepository() {
+		return new FuncionarioRepositoryHibernate();
 	}
 
 }

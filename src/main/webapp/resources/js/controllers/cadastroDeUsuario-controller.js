@@ -1,11 +1,11 @@
 var selecionaItemMenu;
 var listaDeUsuarios = [];
-var table;
+var tableUsuario;
 var usuarioSendoEditado;
 
-function atualizaTable(){
+function atualizaTableUsuario(){
 	buscaUsuarios();
-	table.bootstrapTable('load', listaDeUsuarios);
+	tableUsuario.bootstrapTable('load', listaDeUsuarios);
 }
 
 function carregaUsuario(usuario){
@@ -13,14 +13,14 @@ function carregaUsuario(usuario){
 		$("#inputEmail").val(usuario.email);
 		$("#inputLogin").val(usuario.login);
 	}
-	$("#btnSalvar").hide();
-	$("#btnAlterar").show();
+	$("#btnSalvarUsuario").hide();
+	$("#btnAlterarUsuario").show();
 }
 
 window.operateEventsCadastroDeUsuario = {
 	'click .edit' : function(e, value, row, index) {
 		usuarioSendoEditado = row;
-		$("#divCadastro").show("slow","swing");
+		$("#divCadastroUsuario").show("slow","swing");
 		carregaUsuario(row);
 	},
 	'click .remove' : function(e, value, row, index) {
@@ -28,7 +28,7 @@ window.operateEventsCadastroDeUsuario = {
 			call('http://localhost:8080/controleDeServico/rest/usuario/delete',row).success(function(retorno) {
 				alert("Resgistro excluído com sucesso");
 				
-				atualizaTable();
+				atualizaTableUsuario();
 				
 			}).error(function(msg) {
 				trataMensagemDeErro(msg);
@@ -47,10 +47,10 @@ function buscaUsuarios() {
 }
 
 modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
-	$("#divCadastro").hide();
+	$("#divCadastroUsuario").hide();
 	
-	$("#btnSalvar").show();
-	$("#btnAlterar").hide();
+	$("#btnSalvarUsuario").show();
+	$("#btnAlterarUsuario").hide();
 
 	buscaUsuarios();
 
@@ -61,8 +61,8 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 			call('http://localhost:8080/controleDeServico/rest/usuario/salva',usuario).success(function(retorno) {
 				limpaFormulario();
 				alert("Usuário criado com sucesso");
-				atualizaTable();
-				$("#divCadastro").hide("slow","swing");
+				atualizaTableUsuario();
+				$("#divCadastroUsuario").hide("slow","swing");
 				
 			}).error(function(msg) {
 				trataMensagemDeErro(msg);
@@ -84,8 +84,8 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 			call('http://localhost:8080/controleDeServico/rest/usuario/atualiza',usuarioSendoEditado).success(function(retorno) {
 				limpaFormulario();
 				alert("Usuário editado com sucesso");
-				atualizaTable();
-				$("#divCadastro").hide("slow","swing");
+				atualizaTableUsuario();
+				$("#divCadastroUsuario").hide("slow","swing");
 				
 			}).error(function(msg) {
 				trataMensagemDeErro(msg);
@@ -95,14 +95,14 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 
 	$scope.cancelar = function(usuario) {
 		limpaFormulario();
-		$("#divCadastro").hide("slow","swing");
+		$("#divCadastroUsuario").hide("slow","swing");
 	}
 	
 	$scope.novoUsuario = function() {
 		limpaFormulario();
-		$("#btnSalvar").show();
-		$("#btnAlterar").hide();
-		$("#divCadastro").show("slow","swing");
+		$("#btnSalvarUsuario").show();
+		$("#btnAlterarUsuario").hide();
+		$("#divCadastroUsuario").show("slow","swing");
 	}
 
 
@@ -136,8 +136,8 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 	};
 
 	function ativaTable() {
-		table = $('#table');
-		table.bootstrapTable({
+		tableUsuario = $('#tableUsuario');
+		tableUsuario.bootstrapTable({
 				data : listaDeUsuarios,
 				classes : "table table-hover table-condensed table-hover",
 				cache : false,

@@ -1,14 +1,24 @@
 modulo.controller( 'LoginController', function($scope, $http) {
 	
+	
+	$scope.logar = function(keyEvent,usuario) {
+		  if (keyEvent.which === 13)
+			  autentica(usuario);
+		}
+
+	
     $scope.autenticar = function(usuario) { 
-    	
-		call('http://localhost:8080/controleDeServico/rest/autenticacao/autentica', usuario)
-			.success(function(retorno){
-				window.location = "http://localhost:8080/controleDeServico/views/index.jsp";
-			})
-			.error(function(msg){
-				trataMensagemDeErro(msg);
-			});
+    	autentica(usuario);
+    }
+    
+    function autentica(usuario){
+    	call('http://localhost:8080/controleDeServico/rest/autenticacao/autentica', usuario)
+		.success(function(retorno){
+			window.location = "http://localhost:8080/controleDeServico/views/index.jsp";
+		})
+		.error(function(msg){
+			trataMensagemDeErro(msg);
+		});
     }
 	
 });

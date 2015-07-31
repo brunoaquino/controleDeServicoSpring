@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<div class="panel panel-primary" ng-controller="CadastroDeUsuarioController" id="divCadastro">
+<div class="panel panel-primary" ng-controller="CadastroDeUsuarioController" id="divCadastroUsuario">
 	<div class="panel-heading">
 		Cadastro de Usuário
 	</div>
@@ -29,8 +29,8 @@
 			</div>
 		</div>
 		<div class="panel-footer" style="text-align: right;">
-	        <button type="button" class="btn btn-success" ng-click="salvar(usuario)" id="btnSalvar">salvar</button>
-	        <button type="button" class="btn btn-success" ng-click="editar(usuario)" id="btnAlterar">Editar</button>
+	        <button type="button" class="btn btn-success" ng-click="salvar(usuario)" id="btnSalvarUsuario">salvar</button>
+	        <button type="button" class="btn btn-success" ng-click="editar(usuario)" id="btnAlterarUsuario">Editar</button>
 	        <button type="button" class="btn btn-primary" ng-click="cancelar(usuario)">Cancelar</button>
 	    </div>
     </form>
@@ -40,12 +40,14 @@
     <div class="col-md-12">
         <!-- Advanced Tables -->
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                 Usuários
+            <div class="panel-heading" style="text-align: right;">
+				<label style="float: left;margin-top: 7px;">
+					Usuários
+				</label>
                  <button type="button" ng-click="novoUsuario()" class="btn btn-default" style="margin-left: 80%;">Novo usuario</button>
             </div>
             <div class="panel-body">
-				<table id="table" data-sort-name="login">
+				<table id="tableUsuario" data-sort-name="login">
 				    <thead>
 				        <tr>
 				            <th data-field="login">Login</th>

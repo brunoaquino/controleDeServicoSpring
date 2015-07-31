@@ -35,7 +35,7 @@
 								<span class="input-group-addon">
 									<i class="fa fa-lock"></i>
 								</span>
-								<input type="password" class="form-control" ng-model="usuario.senha">
+								<input type="password" class="form-control" ng-model="usuario.senha" ng-keypress="logar($event,usuario)">
 								
 							</div>
 							<div class="form-group">

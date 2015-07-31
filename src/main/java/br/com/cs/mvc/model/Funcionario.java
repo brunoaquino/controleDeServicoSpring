@@ -44,7 +44,7 @@ public class Funcionario implements Serializable {
 	private Date dataDeCadastro;
 	private Date dataDeAlteracao;
 	private Date dataDeNascimento;
-	private Set<Servico> servicos = new HashSet<Servico>(0);
+	private Set<Servico> servicos = new HashSet<Servico>();
 
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment")
@@ -181,6 +181,9 @@ public class Funcionario implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "funcionario_servico", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "servico_id"))
 	public Set<Servico> getServicos() {
+		if (servicos == null) {
+			servicos = new HashSet<Servico>();
+		}
 		return servicos;
 	}
 

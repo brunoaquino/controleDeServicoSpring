@@ -8,40 +8,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cs.mvc.model.Servico;
-import br.com.cs.mvc.service.ServicoService;
+import br.com.cs.mvc.model.Funcionario;
+import br.com.cs.mvc.service.FuncionarioService;
 
 @RestController
-@RequestMapping("/rest/servico")
-public class ControladorServico extends ControladorBase {
+@RequestMapping("/rest/funcionario")
+public class ControladorFuncionario extends ControladorBase {
 
 	@Autowired
-	ServicoService service;
+	FuncionarioService service;
 
 	@RequestMapping(value = "/salva", method = RequestMethod.POST)
 	@Transactional
-	public Servico salva(Servico servico) {
-		service.salva(servico);
-		return servico;
+	public Funcionario salva(Funcionario funcionario) {
+		service.salva(funcionario);
+		return funcionario;
 	}
 
 	@RequestMapping(value = "/atualiza", method = RequestMethod.POST)
 	@Transactional
-	public Servico atualiza(Servico servico) {
-		service.atualiza(servico);
-		return servico;
+	public Funcionario atualiza(Funcionario funcionario) {
+		service.atualiza(funcionario);
+		return funcionario;
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@Transactional
-	public Servico delete(Servico servico) {
-		service.delete(servico);
-		return servico;
+	public Funcionario delete(Funcionario funcionario) {
+		service.delete(funcionario);
+		return funcionario;
 	}
 
-	@RequestMapping(value = "/getServicos", method = RequestMethod.POST)
+	@RequestMapping(value = "/getFuncionarios", method = RequestMethod.POST)
 	@Transactional
-	public List<Servico> getServicos() {
+	public List<Funcionario> getFuncionarios() {
 		return service.getServicos();
 	}
 }
