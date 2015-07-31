@@ -58,6 +58,12 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 	$("#btnSalvarFuncionario").show();
 	$("#btnAlterarFuncionario").hide();
 	
+	$('#inputCepFuncionario').mask('00000-000');
+	$('#inputTelefoneFuncionario').mask('(00) 0000-0000');
+	$('#inputCelularFuncionario').mask('(00) 0000-0000');
+	$('#inputCpfFuncionario').mask('000.000.000-00');
+	$('#inputRgFuncionario').mask('99999999999');
+	
 	 $('#inputDataNascimento').datepicker({
 			autoclose : true,
 			todayHighlight : true,

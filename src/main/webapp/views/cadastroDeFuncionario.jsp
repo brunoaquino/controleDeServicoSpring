@@ -37,6 +37,10 @@
 							<label class="control-label" for="inputTelefoneFuncionario">Telefone:</label>
 							<input class="form-control" id="inputTelefoneFuncionario" ng-model="funcionario.telefone" />
 						</div>
+                        <div class="form-group col-md-2">
+							<label class="control-label" for="inputCelularFuncionario">Celular:</label>
+							<input class="form-control" id="inputCelularFuncionario" ng-model="funcionario.celular" />
+						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-3">
@@ -62,13 +66,8 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label class="control-label" for="inputDescric
-							aoFuncionario">Observações:</label>
-							<textarea class="form-control" id="inputDescricaoFuncionario "ng-model="servico.descricao" rows="3"></textarea>
-						</div>
-						<div class="form-group col-md-6">
-							<label class="control-label" for="inputDescricaoFuncionario">Observações:</label>
-							<textarea class="form-control" id="inputDescricaoFuncionario "ng-model="servico.descricao" rows="3"></textarea>
+							<label class="control-label" for="inputObservacoesFuncionario">Observações:</label>
+							<textarea class="form-control" id="inputObservacoesFuncionario "ng-model="servico.observacoes" rows="3"></textarea>
 						</div>
 					</div>
 				</div>
@@ -87,7 +86,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading" style="text-align: right;">
 				<label style="float: left;margin-top: 7px;">
-					Serviços
+					Funcionários
 				</label>
 				<button type="button" ng-click="novoFuncionario()" class="btn btn-default" style="margin-left: 80%;">Novo Funcionário</button>
 			</div>
