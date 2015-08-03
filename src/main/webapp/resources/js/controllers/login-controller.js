@@ -1,5 +1,6 @@
 modulo.controller( 'LoginController', function($scope, $http) {
 	
+	$("#login").focus()
 	
 	$scope.logar = function(keyEvent,usuario) {
 		  if (keyEvent.which === 13)

@@ -29,7 +29,7 @@
 								<span class="input-group-addon">
 									<i class="fa fa-tag"></i>
 								</span>
-								<input class="form-control" ng-model="usuario.login">
+								<input class="form-control" ng-model="usuario.login" id="login">
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon">

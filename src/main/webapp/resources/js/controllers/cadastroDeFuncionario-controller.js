@@ -9,7 +9,7 @@ function atualizaTable(){
 }
 
 function carregaFuncionario(funcionario){
-	if(funcionario!=undefined){
+	if(funcionario!=undefined){// TODO COntinuar daki
 		$("#inputNomeFuncionario").val(funcionario.nome);
 		if(!(funcionario.preco.toString().indexOf(".") > -1)){
 			$("#inputPreco").val(funcionario.preco + ".00");
@@ -17,7 +17,19 @@ function carregaFuncionario(funcionario){
 			$("#inputPreco").maskMoney('mask', funcionario.preco);
 		}
 		$("#inputPreco").maskMoney('mask');
-		$("#inputDescricao").val(funcionario.descricao);
+		
+		$("#inputNomeFuncionario").val("");
+		$("#inputEmailFuncionario").val("");
+		$("#inputCpfFuncionario").val("");
+		$("#inputRgFuncionario").val("");
+		$("#inputDataNascimentoValue").val("");
+		$("#inputTelefoneFuncionario").val("");
+		$("#inputCelularFuncionario").val("");
+		$("#inputEnderecoFuncionario").val("");
+		$("#inputCepFuncionario").val("");
+		$("#SelectEstado").val("");
+		$("#inputBairroFuncionario").val("");
+		$("#inputObservacoesFuncionario").val("");
 	}
 	$("#btnSalvarFuncionario").hide();
 	$("#btnAlterarFuncionario").show();
@@ -55,17 +67,20 @@ function buscaFuncionarios() {
 modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 	$("#divCadastroFuncionario").hide();
 	
+	$scope.estados = estados;
+	
 	$("#btnSalvarFuncionario").show();
 	$("#btnAlterarFuncionario").hide();
 	
 	$('#inputCepFuncionario').mask('00000-000');
 	$('#inputTelefoneFuncionario').mask('(00) 0000-0000');
 	$('#inputCelularFuncionario').mask('(00) 0000-0000');
-	$('#inputCpfFuncionario').mask('000.000.000-00');
+	$('#inputCpfFuncionario').mask('999.999.999-99');
 	$('#inputRgFuncionario').mask('99999999999');
 	
 	 $('#inputDataNascimento').datepicker({
 			autoclose : true,
+			format:'dd/mm/yyyy',
 			todayHighlight : true,
 			language : 'pt-BR'
 		});
@@ -75,9 +90,10 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 	ativaTable();
 	
 	$scope.salvar = function(funcionario) {
-		funcionario.preco = $('#inputPreco').maskMoney('unmasked')[0]; 
-		
 		if (isDadosValidos(funcionario)) {
+			funcionario.dataDeNascimento = $('#inputDataNascimentoValue').val();
+			funcionario.cpf = funcionario.cpf.replace("-","").replace(".","").replace(".","");
+			
 			call('http://localhost:8080/controleDeServico/rest/funcionario/salva',funcionario).success(function(retorno) {
 				limpaFormulario();
 				alert("Usuário criado com sucesso");
@@ -123,12 +139,16 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 	function isDadosValidos(funcionario) {
 		var dadosValidos = true;
 		if (funcionario != undefined) {
-			if (funcionario.nome == '') {
+			if (funcionario.nome == undefined || funcionario.nome == '') {
 				alert("Campo nome é obrigatório");
 				dadosValidos = false;
 			}
+			if (funcionario.cpf == undefined || funcionario.cpf == '') {
+				alert("Campo CPF é obrigatório");
+				dadosValidos = false;
+			}
 		} else {
-			alert("Preencha os dados obrigatórios (*) do serviço");
+			alert("Preencha os dados obrigatórios (*) do funcionário");
 			dadosValidos = false;
 		}
 
@@ -137,8 +157,17 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 	
 	function limpaFormulario(){
 		$("#inputNomeFuncionario").val("");
-		$("#inputPreco").val("");
-		$("#inputDescricao").val("");
+		$("#inputEmailFuncionario").val("");
+		$("#inputCpfFuncionario").val("");
+		$("#inputRgFuncionario").val("");
+		$("#inputDataNascimentoValue").val("");
+		$("#inputTelefoneFuncionario").val("");
+		$("#inputCelularFuncionario").val("");
+		$("#inputEnderecoFuncionario").val("");
+		$("#inputCepFuncionario").val("");
+		$("#SelectEstado").val("");
+		$("#inputBairroFuncionario").val("");
+		$("#inputObservacoesFuncionario").val("");
 	};
 
 	function ativaTable() {

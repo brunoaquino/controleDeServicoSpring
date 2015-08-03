@@ -12,7 +12,7 @@
 								class="obrigatorio">*</span> <input class="form-control"
 								name="nome" id="inputNomeServico" ng-model="servico.nome" />
 						</div>
-						<div class="form-group col-md-1">
+						<div class="form-group col-md-2">
 							<label class="control-label" for="inputPreco">Preço:</label> <input
 								class="form-control" id="inputPreco" ng-model="servico.preco"
 								name="preco" />

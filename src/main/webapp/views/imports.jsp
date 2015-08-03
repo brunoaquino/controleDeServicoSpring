@@ -21,6 +21,7 @@
 
 	
 <script src="../resources/js/minhasLibs/request.js"></script>
+<script src="../resources/js/minhasLibs/enums.js"></script>
 <script src="../resources/js/minhasLibs/tableFormatters.js"></script>
 <script src="../resources/js/directives/minhas-diretivas.js"></script>
 <script src="../resources/js/directives/modal-diretiva.js"></script>

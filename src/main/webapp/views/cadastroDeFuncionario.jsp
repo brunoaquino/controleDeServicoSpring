@@ -8,26 +8,26 @@
 					<div class="row">
 						<div class="form-group col-md-5">
 							<label class="control-label" for="inputNomeFuncionario">Nome:</label> <span class="obrigatorio">*</span> 
-							<input class="form-control" id="inputNomeFuncionario" ng-model="funcionario.nome" />
+							<input class="form-control" id="inputNomeFuncionario" ng-model="funcionario.nome"/>
 						</div>
 						<div class="form-group col-md-5">
-							<label class="control-label" for="inputEmailFuncionario">E-mail:</label>
+							<label class="control-label" for="inputEmailFuncionario">E-mail:</label> 
 							<input class="form-control" id="inputEmailFuncionario" ng-model="funcionario.email" />
 						</div>
 					</div>
 					<div class="row">
                         <div class="form-group col-md-2">
-							<label class="control-label" for="inputCpfFuncionario">CPF:</label>
+							<label class="control-label" for="inputCpfFuncionario">CPF:</label> <span class="obrigatorio">*</span> 
 							<input class="form-control" id="inputCpfFuncionario" ng-model="funcionario.cpf" />
 						</div>
                         <div class="form-group col-md-2">
-							<label class="control-label" for="inputRgFuncionario">RG:</label>
+							<label class="control-label" for="inputRgFuncionario">RG:</label> 
 							<input class="form-control" id="inputRgFuncionario" ng-model="funcionario.rg" />
 						</div>
 						<div class="form-group col-md-2 col-md-offset-1">
 							<label class="control-label" for="inputDataNascimento">Data de Nascimento:</label>
 			                <div class='input-group date' id='inputDataNascimento'>
-			                    <input type='text' class="form-control" />
+			                    <input type='text' class="form-control" id='inputDataNascimentoValue'/>
 			                    <span class="input-group-addon">
 			                        <span class="glyphicon glyphicon-calendar"></span>
 			                    </span>
@@ -52,11 +52,10 @@
 							<input class="form-control" id="inputCepFuncionario" ng-model="funcionario.cep" />
 						</div>
 						<div class="form-group col-md-2">
-							<label class="control-label" for="inputCepFuncionario">Estado:</label>
-							<select class="form-control">
-                                 <option>Bahia</option>
-                                 <option>Goiás</option>
-                                 <option>São Paulo</option>
+							<label class="control-label" for="SelectEstado">Estado:</label>
+							<select class="form-control" ng-model="funcionario.estado" id="SelectEstado">
+								 <option value="">Selecione</option>
+                                 <option ng-repeat="estado in estados" value="{{estado.value}}">{{estado.texto}}</option>
                              </select>
 						</div>
 						<div class="form-group col-md-2">
@@ -67,7 +66,7 @@
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label class="control-label" for="inputObservacoesFuncionario">Observações:</label>
-							<textarea class="form-control" id="inputObservacoesFuncionario "ng-model="servico.observacoes" rows="3"></textarea>
+							<textarea class="form-control" id="inputObservacoesFuncionario"ng-model="servico.observacoes" rows="3"></textarea>
 						</div>
 					</div>
 				</div>
