@@ -3,7 +3,7 @@ var listaDeServicos = [];
 var tableServico;
 var servicoSendoEditado;
 
-function atualizaTable(){
+function atualizaTableServico(){
 	buscaServicos();
 	tableServico.bootstrapTable('load', listaDeServicos);
 }
@@ -34,7 +34,7 @@ window.operateEventsCadastroDeServico = {
 			call('http://localhost:8080/controleDeServico/rest/servico/delete',row).success(function(retorno) {
 				alert("Resgistro excluído com sucesso");
 				
-				atualizaTable();
+				atualizaTableServico();
 				
 			}).error(function(msg) {
 				trataMensagemDeErro(msg);
@@ -76,8 +76,8 @@ modulo.controller('CadastroDeServicoController', function($scope, $http) {
 		if (isDadosValidos(servico)) {
 			call('http://localhost:8080/controleDeServico/rest/servico/salva',servico).success(function(retorno) {
 				limpaFormulario();
-				alert("Usuário criado com sucesso");
-				atualizaTable();
+				alert("Serviço criado com sucesso");
+				atualizaTableServico();
 				$("#divCadastroServico").hide("slow","swing");
 				
 			}).error(function(msg) {
@@ -94,7 +94,7 @@ modulo.controller('CadastroDeServicoController', function($scope, $http) {
 			call('http://localhost:8080/controleDeServico/rest/servico/atualiza',servicoSendoEditado).success(function(retorno) {
 				limpaFormulario();
 				alert("Serviço editado com sucesso");
-				atualizaTable();
+				atualizaTableServico();
 				$("#divCadastroServico").hide("slow","swing");
 				
 			}).error(function(msg) {
