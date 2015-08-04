@@ -1,7 +1,23 @@
-var modulo = angular.module('csAdmin', ['minhasDiretivas','ngAnimate']);
+var modulo = angular.module('csAdmin', [ 'minhasDiretivas', 'ngAnimate' ]);
 
-
-function trataMensagemDeErro(msg){
-if(msg.responseText != undefined){
-	alert(JSON.parse(msg.responseText).mensagemDeErro);
-}}
+function trataMensagemDeErro(msg) {
+	var mensagem;
+	try{
+		mensagem = JSON.parse(msg.responseText);
+		
+		if (msg.responseText != undefined) {
+			alert(mensagem.mensagemDeErro);
+			return;
+		}
+		
+	}catch(err){
+		if(msg.status==400){
+			alert("Servidor não encontrado");
+			return;
+		}
+		if(msg.status==200){
+			return;
+		}
+	}
+	
+}

@@ -20,13 +20,13 @@
 <!-- <script src="../resources/js/lib/angular-route.min.js"></script> -->
 
 	
-<script src="../resources/js/minhasLibs/request.js"></script>
-<script src="../resources/js/minhasLibs/enums.js"></script>
-<script src="../resources/js/minhasLibs/tableFormatters.js"></script>
-<script src="../resources/js/directives/minhas-diretivas.js"></script>
-<script src="../resources/js/directives/modal-diretiva.js"></script>
+<script src="../resources/js/minhasLibs/request.js" charset="utf-8"></script>
+<script src="../resources/js/minhasLibs/enums.js" charset="utf-8"></script>
+<script src="../resources/js/minhasLibs/tableFormatters.js" charset="utf-8"></script>
+<script src="../resources/js/directives/minhas-diretivas.js" charset="utf-8"></script>
+<script src="../resources/js/directives/modal-diretiva.js" charset="utf-8"></script>
 
-<script src="../resources/js/main.js"></script>
+<script src="../resources/js/main.js" charset="utf-8"></script>
 
 <script src="../resources/js/controllers/login-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/index-controller.js" charset="utf-8"></script>

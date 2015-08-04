@@ -82,6 +82,10 @@ function cnpjFormatter(value, row) {
 function dataFormatter(value, row) {
 	return value.substring(0, 10).replace("-", "/").replace("-", "/");
 }
+function dataConverterFormatter(value, row) {
+	var data = new Date(value);
+	return data.getDate() + '/' + (data.getMonth()+1) + '/' + data.getFullYear();
+}
 function moneyFormatter(value, row) {
 	return "R$"+moeda(value, 2, ',', '.');
 }

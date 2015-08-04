@@ -22,7 +22,7 @@ public class ControladorFuncionario extends ControladorBase {
 	@Transactional
 	public Funcionario salva(Funcionario funcionario) {
 		service.salva(funcionario);
-		return funcionario;
+		return new Funcionario();
 	}
 
 	@RequestMapping(value = "/atualiza", method = RequestMethod.POST)
@@ -40,8 +40,7 @@ public class ControladorFuncionario extends ControladorBase {
 	}
 
 	@RequestMapping(value = "/getFuncionarios", method = RequestMethod.POST)
-	@Transactional
 	public List<Funcionario> getFuncionarios() {
-		return service.getServicos();
+		return service.getFuncionarios();
 	}
 }

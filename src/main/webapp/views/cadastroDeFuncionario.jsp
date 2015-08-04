@@ -8,21 +8,21 @@
 					<div class="row">
 						<div class="form-group col-md-5">
 							<label class="control-label" for="inputNomeFuncionario">Nome:</label> <span class="obrigatorio">*</span> 
-							<input class="form-control" id="inputNomeFuncionario" ng-model="funcionario.nome"/>
+							<input class="form-control" id="inputNomeFuncionario" />
 						</div>
 						<div class="form-group col-md-5">
 							<label class="control-label" for="inputEmailFuncionario">E-mail:</label> 
-							<input class="form-control" id="inputEmailFuncionario" ng-model="funcionario.email" />
+							<input class="form-control" id="inputEmailFuncionario" />
 						</div>
 					</div>
 					<div class="row">
                         <div class="form-group col-md-2">
 							<label class="control-label" for="inputCpfFuncionario">CPF:</label> <span class="obrigatorio">*</span> 
-							<input class="form-control" id="inputCpfFuncionario" ng-model="funcionario.cpf" />
+							<input class="form-control" id="inputCpfFuncionario" />
 						</div>
                         <div class="form-group col-md-2">
 							<label class="control-label" for="inputRgFuncionario">RG:</label> 
-							<input class="form-control" id="inputRgFuncionario" ng-model="funcionario.rg" />
+							<input class="form-control" id="inputRgFuncionario" />
 						</div>
 						<div class="form-group col-md-2 col-md-offset-1">
 							<label class="control-label" for="inputDataNascimento">Data de Nascimento:</label>
@@ -35,45 +35,45 @@
            				</div>
                         <div class="form-group col-md-2">
 							<label class="control-label" for="inputTelefoneFuncionario">Telefone:</label>
-							<input class="form-control" id="inputTelefoneFuncionario" ng-model="funcionario.telefone" />
+							<input class="form-control" id="inputTelefoneFuncionario" />
 						</div>
                         <div class="form-group col-md-2">
 							<label class="control-label" for="inputCelularFuncionario">Celular:</label>
-							<input class="form-control" id="inputCelularFuncionario" ng-model="funcionario.celular" />
+							<input class="form-control" id="inputCelularFuncionario" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-3">
 							<label class="control-label" for="inputEnderecoFuncionario">Endereço:</label>
-							<input class="form-control" id="inputEnderecoFuncionario" ng-model="funcionario.endereco" />
+							<input class="form-control" id="inputEnderecoFuncionario" />
 						</div>
 						<div class="form-group col-md-2">
 							<label class="control-label" for="inputCepFuncionario">CEP:</label>
-							<input class="form-control" id="inputCepFuncionario" ng-model="funcionario.cep" />
+							<input class="form-control" id="inputCepFuncionario" />
 						</div>
 						<div class="form-group col-md-2">
 							<label class="control-label" for="SelectEstado">Estado:</label>
-							<select class="form-control" ng-model="funcionario.estado" id="SelectEstado">
+							<select class="form-control" id="SelectEstado">
 								 <option value="">Selecione</option>
                                  <option ng-repeat="estado in estados" value="{{estado.value}}">{{estado.texto}}</option>
                              </select>
 						</div>
 						<div class="form-group col-md-2">
 							<label class="control-label" for="inputBairroFuncionario">Bairro:</label>
-							<input class="form-control" id="inputBairroFuncionario" ng-model="funcionario.bairro" />
+							<input class="form-control" id="inputBairroFuncionario"/>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label class="control-label" for="inputObservacoesFuncionario">Observações:</label>
-							<textarea class="form-control" id="inputObservacoesFuncionario"ng-model="servico.observacoes" rows="3"></textarea>
+							<textarea class="form-control" id="inputObservacoesFuncionario"rows="3"></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="panel-footer" style="text-align: right;">
-			<button type="button" class="btn btn-success" ng-click="salvar(funcionario)" id="btnSalvarFuncionario">salvar</button>
+			<button type="button" class="btn btn-success" ng-click="salvar()" id="btnSalvarFuncionario">salvar</button>
 			<button type="button" class="btn btn-success" ng-click="editar()" id="btnAlterarFuncionario">Editar</button>
 			<button type="button" class="btn btn-primary" ng-click="cancelar()">Cancelar</button>
 		</div>
@@ -94,9 +94,8 @@
 					<thead>
 						<tr>
 							<th data-field="nome">Nome</th>
-							<th data-field="preco" data-formatter="moneyFormatter">Preço</th>
-							<th data-field="descricao">Descrição</th>
-							<th data-field="operate" data-formatter="operateFormatterPadrao" data-events="operateEventsCadastroDeServico">Ação</th>
+							<th data-field="dataDeCadastro" data-formatter="dataConverterFormatter">Data de Cadastro</th>
+							<th data-field="operate" data-formatter="operateFormatterPadrao" data-events="operateEventsCadastroDeFuncionario">Ação</th>
 						</tr>
 					</thead>
 				</table>

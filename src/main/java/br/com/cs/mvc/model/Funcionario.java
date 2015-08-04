@@ -1,21 +1,13 @@
 package br.com.cs.mvc.model;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,15 +18,14 @@ import br.com.cs.mvc.tipos.Estado;
 
 @Entity
 @Table(name = "funcionario")
-public class Funcionario implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Funcionario {
 
 	private int id;
 	private String nome;
 	private String cpf;
 	private String rg;
 	private String telefone;
+	private String celular;
 	private String endereco;
 	private String cep;
 	private Estado estado;
@@ -44,7 +35,8 @@ public class Funcionario implements Serializable {
 	private Date dataDeCadastro;
 	private Date dataDeAlteracao;
 	private Date dataDeNascimento;
-	private Set<Servico> servicos = new HashSet<Servico>();
+
+	// private Set<Servico> servicos = new HashSet<Servico>();
 
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment")
@@ -149,6 +141,15 @@ public class Funcionario implements Serializable {
 		this.telefone = telefone;
 	}
 
+	@Column(name = "text_celular")
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
 	@Column(name = "dataDeCadastro")
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDataDeCadastro() {
@@ -178,16 +179,18 @@ public class Funcionario implements Serializable {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "funcionario_servico", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "servico_id"))
-	public Set<Servico> getServicos() {
-		if (servicos == null) {
-			servicos = new HashSet<Servico>();
-		}
-		return servicos;
-	}
-
-	public void setServicos(Set<Servico> servicos) {
-		this.servicos = servicos;
-	}
+	// @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+	// CascadeType.MERGE })
+	// @JoinTable(name = "funcionario_servico", joinColumns = @JoinColumn(name =
+	// "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "servico_id"))
+	// public Set<Servico> getServicos() {
+	// if (servicos == null) {
+	// servicos = new HashSet<Servico>();
+	// }
+	// return servicos;
+	// }
+	//
+	// public void setServicos(Set<Servico> servicos) {
+	// this.servicos = servicos;
+	// }
 }

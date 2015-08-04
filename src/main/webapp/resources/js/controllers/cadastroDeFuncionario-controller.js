@@ -8,28 +8,36 @@ function atualizaTable(){
 	tableFuncionario.bootstrapTable('load', listaDeFuncionarios);
 }
 
+function ativaMascarasFuncionario(){
+	$('#inputCepFuncionario').mask('00000-000');
+	$('#inputTelefoneFuncionario').mask('(00) 0000-0000');
+	$('#inputCelularFuncionario').mask('(00) 0000-0000');
+	$('#inputCpfFuncionario').mask('999.999.999-99');
+	$('#inputRgFuncionario').mask('99999999999');
+	
+	 $('#inputDataNascimento').datepicker({
+			autoclose : true,
+			format:'dd/mm/yyyy',
+			todayHighlight : true,
+			language : 'pt-BR'
+		});
+}
+
 function carregaFuncionario(funcionario){
-	if(funcionario!=undefined){// TODO COntinuar daki
+	if(funcionario!=undefined){
 		$("#inputNomeFuncionario").val(funcionario.nome);
-		if(!(funcionario.preco.toString().indexOf(".") > -1)){
-			$("#inputPreco").val(funcionario.preco + ".00");
-		}else{
-			$("#inputPreco").maskMoney('mask', funcionario.preco);
-		}
-		$("#inputPreco").maskMoney('mask');
-		
-		$("#inputNomeFuncionario").val("");
-		$("#inputEmailFuncionario").val("");
-		$("#inputCpfFuncionario").val("");
-		$("#inputRgFuncionario").val("");
-		$("#inputDataNascimentoValue").val("");
-		$("#inputTelefoneFuncionario").val("");
-		$("#inputCelularFuncionario").val("");
-		$("#inputEnderecoFuncionario").val("");
-		$("#inputCepFuncionario").val("");
-		$("#SelectEstado").val("");
-		$("#inputBairroFuncionario").val("");
-		$("#inputObservacoesFuncionario").val("");
+		$("#inputEmailFuncionario").val(funcionario.email);
+		$("#inputCpfFuncionario").val(funcionario.cpf);
+		$("#inputRgFuncionario").val(funcionario.rg);
+		$("#inputDataNascimentoValue").val(funcionario.dataDeNascimento);
+		$("#inputTelefoneFuncionario").val(funcionario.telefone);
+		$("#inputCelularFuncionario").val(funcionario.celular);
+		$("#inputEnderecoFuncionario").val(funcionario.endereco);
+		$("#inputCepFuncionario").val(funcionario.cep);
+		$("#SelectEstado").val(funcionario.estado);
+		$("#inputBairroFuncionario").val(funcionario.bairro);
+		$("#inputObservacoesFuncionario").val(funcionario.observacoes);
+		ativaMascarasFuncionario();
 	}
 	$("#btnSalvarFuncionario").hide();
 	$("#btnAlterarFuncionario").show();
@@ -69,30 +77,30 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 	
 	$scope.estados = estados;
 	
-	$("#btnSalvarFuncionario").show();
-	$("#btnAlterarFuncionario").hide();
-	
-	$('#inputCepFuncionario').mask('00000-000');
-	$('#inputTelefoneFuncionario').mask('(00) 0000-0000');
-	$('#inputCelularFuncionario').mask('(00) 0000-0000');
-	$('#inputCpfFuncionario').mask('999.999.999-99');
-	$('#inputRgFuncionario').mask('99999999999');
-	
-	 $('#inputDataNascimento').datepicker({
-			autoclose : true,
-			format:'dd/mm/yyyy',
-			todayHighlight : true,
-			language : 'pt-BR'
-		});
+	ativaMascarasFuncionario();
 	
 	buscaFuncionarios();
 
 	ativaTable();
 	
-	$scope.salvar = function(funcionario) {
-		if (isDadosValidos(funcionario)) {
-			funcionario.dataDeNascimento = $('#inputDataNascimentoValue').val();
-			funcionario.cpf = funcionario.cpf.replace("-","").replace(".","").replace(".","");
+	$scope.salvar = function() {
+			var funcionario = {};
+			funcionario.nome = $("#inputNomeFuncionario").val();
+			funcionario.email = $("#inputEmailFuncionario").val();
+			funcionario.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");;
+			if($('#inputDataNascimentoValue').val() != ""){
+				funcionario.dataDeNascimento = $('#inputDataNascimentoValue').val();
+			}			
+			funcionario.rg = $("#inputRgFuncionario").val();
+			funcionario.telefone = $("#inputTelefoneFuncionario").val();
+			funcionario.celular = $("#inputCelularFuncionario").val();
+			funcionario.endereco = $("#inputEnderecoFuncionario").val();
+			funcionario.cep = $("#inputCepFuncionario").val();
+			funcionario.estado = $("#SelectEstado").val();
+			funcionario.bairro = $("#inputBairroFuncionario").val();
+			funcionario.observacoes = $("#inputObservacoesFuncionario").val();
+			
+			isDadosValidos(funcionario);
 			
 			call('http://localhost:8080/controleDeServico/rest/funcionario/salva',funcionario).success(function(retorno) {
 				limpaFormulario();
@@ -104,7 +112,6 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 				trataMensagemDeErro(msg);
 			});
 		}
-	}
 	$scope.editar = function() {
 			funcionarioSendoEditado.nome = $('#inputNomeFuncionario').val();
 			funcionarioSendoEditado.preco = $('#inputPreco').maskMoney('unmasked')[0];
