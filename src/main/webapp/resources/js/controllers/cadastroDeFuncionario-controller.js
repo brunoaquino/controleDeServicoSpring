@@ -130,6 +130,8 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			funcionarioSendoEditado.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");
 			if($('#inputDataNascimentoValue').val() != ""){
 				funcionarioSendoEditado.dataDeNascimento = new Date($('#inputDataNascimentoValue').val());
+			}else{
+				funcionarioSendoEditado.dataDeNascimento = undefined;
 			}			
 			funcionarioSendoEditado.rg = $("#inputRgFuncionario").val();
 			funcionarioSendoEditado.telefone = $("#inputTelefoneFuncionario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
