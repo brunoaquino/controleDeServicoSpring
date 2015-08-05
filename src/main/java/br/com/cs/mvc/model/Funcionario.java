@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,8 +11,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
-
-import br.com.cs.mvc.tipos.Estado;
 
 @Entity
 @Table(name = "funcionario")
@@ -28,7 +24,7 @@ public class Funcionario {
 	private String celular;
 	private String endereco;
 	private String cep;
-	private Estado estado;
+	private String estado;
 	private String bairro;
 	private String email;
 	private String observacoes;
@@ -95,13 +91,12 @@ public class Funcionario {
 		this.cep = cep;
 	}
 
-	@Column(name = "intg_estado")
-	@Enumerated(EnumType.ORDINAL)
-	public Estado getEstado() {
+	@Column(name = "text_estado")
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 

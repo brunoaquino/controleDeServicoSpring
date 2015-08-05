@@ -10,8 +10,8 @@ function atualizaTable(){
 
 function ativaMascarasFuncionario(){
 	$('#inputCepFuncionario').mask('00000-000');
-	$('#inputTelefoneFuncionario').mask('(00) 0000-0000');
-	$('#inputCelularFuncionario').mask('(00) 0000-0000');
+	$('#inputTelefoneFuncionario').mask('(00)0000-0000');
+	$('#inputCelularFuncionario').mask('(00)0000-0000');
 	$('#inputCpfFuncionario').mask('999.999.999-99');
 	$('#inputRgFuncionario').mask('99999999999');
 	
@@ -27,9 +27,13 @@ function carregaFuncionario(funcionario){
 	if(funcionario!=undefined){
 		$("#inputNomeFuncionario").val(funcionario.nome);
 		$("#inputEmailFuncionario").val(funcionario.email);
-		$("#inputCpfFuncionario").val(funcionario.cpf);
+		$("#inputCpfFuncionario").val(formataCPFOuCNPJ(funcionario.cpf));
 		$("#inputRgFuncionario").val(funcionario.rg);
-		$("#inputDataNascimentoValue").val(funcionario.dataDeNascimento);
+		
+		if(funcionario.dataDeNascimento != undefined && funcionario.dataDeNascimento != ""){
+			$("#inputDataNascimentoValue").val(formataData(funcionario.dataDeNascimento));
+		}
+		
 		$("#inputTelefoneFuncionario").val(funcionario.telefone);
 		$("#inputCelularFuncionario").val(funcionario.celular);
 		$("#inputEnderecoFuncionario").val(funcionario.endereco);
@@ -51,6 +55,14 @@ window.operateEventsCadastroDeFuncionario = {
 	},
 	'click .remove' : function(e, value, row, index) {
 		if(confirm("Excluir Registro?")){
+			
+			row.dataDeAlteracao = new Date(row.dataDeAlteracao);
+			row.dataDeCadastro = new Date(row.dataDeCadastro);
+			
+			if(row.dataDeNascimento != undefined && row.dataDeNascimento != ""){
+				row.dataDeNascimento = new Date(row.dataDeNascimento);
+			}
+			
 			call('http://localhost:8080/controleDeServico/rest/funcionario/delete',row).success(function(retorno) {
 				alert("Resgistro excluído com sucesso");
 				
@@ -87,15 +99,15 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			var funcionario = {};
 			funcionario.nome = $("#inputNomeFuncionario").val();
 			funcionario.email = $("#inputEmailFuncionario").val();
-			funcionario.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");;
+			funcionario.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");
 			if($('#inputDataNascimentoValue').val() != ""){
-				funcionario.dataDeNascimento = $('#inputDataNascimentoValue').val();
+				funcionario.dataDeNascimento = new Date($('#inputDataNascimentoValue').val());
 			}			
 			funcionario.rg = $("#inputRgFuncionario").val();
-			funcionario.telefone = $("#inputTelefoneFuncionario").val();
-			funcionario.celular = $("#inputCelularFuncionario").val();
+			funcionario.telefone = $("#inputTelefoneFuncionario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
+			funcionario.celular = $("#inputCelularFuncionario").val().replace("-","").replace("(","").replace(" ","").replace(")","");
 			funcionario.endereco = $("#inputEnderecoFuncionario").val();
-			funcionario.cep = $("#inputCepFuncionario").val();
+			funcionario.cep = $("#inputCepFuncionario").val().replace("-","").replace(".","").replace(".","");
 			funcionario.estado = $("#SelectEstado").val();
 			funcionario.bairro = $("#inputBairroFuncionario").val();
 			funcionario.observacoes = $("#inputObservacoesFuncionario").val();
@@ -104,7 +116,7 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			
 			call('http://localhost:8080/controleDeServico/rest/funcionario/salva',funcionario).success(function(retorno) {
 				limpaFormulario();
-				alert("Usuário criado com sucesso");
+				alert("Funcionário criado com sucesso");
 				atualizaTable();
 				$("#divCadastroFuncionario").hide("slow","swing");
 				
@@ -113,14 +125,31 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			});
 		}
 	$scope.editar = function() {
-			funcionarioSendoEditado.nome = $('#inputNomeFuncionario').val();
-			funcionarioSendoEditado.preco = $('#inputPreco').maskMoney('unmasked')[0];
-			funcionarioSendoEditado.descricao = $('#inputDescricao').val();
+			funcionarioSendoEditado.nome = $("#inputNomeFuncionario").val();
+			funcionarioSendoEditado.email = $("#inputEmailFuncionario").val();
+			funcionarioSendoEditado.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");
+			if($('#inputDataNascimentoValue').val() != ""){
+				funcionarioSendoEditado.dataDeNascimento = new Date($('#inputDataNascimentoValue').val());
+			}			
+			funcionarioSendoEditado.rg = $("#inputRgFuncionario").val();
+			funcionarioSendoEditado.telefone = $("#inputTelefoneFuncionario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
+			funcionarioSendoEditado.celular = $("#inputCelularFuncionario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
+			funcionarioSendoEditado.endereco = $("#inputEnderecoFuncionario").val();
+			funcionarioSendoEditado.cep = $("#inputCepFuncionario").val().replace("-","").replace(".","").replace(".","");
+			funcionarioSendoEditado.estado = $("#SelectEstado").val();
+			funcionarioSendoEditado.bairro = $("#inputBairroFuncionario").val();
+			funcionarioSendoEditado.observacoes = $("#inputObservacoesFuncionario").val();
+			
+			
+			funcionarioSendoEditado.dataDeAlteracao = new Date(funcionarioSendoEditado.dataDeAlteracao);
+			funcionarioSendoEditado.dataDeCadastro = new Date(funcionarioSendoEditado.dataDeCadastro);
+			
+			isDadosValidos(funcionarioSendoEditado);
 		
 		if (isDadosValidos(funcionarioSendoEditado)) {
 			call('http://localhost:8080/controleDeServico/rest/funcionario/atualiza',funcionarioSendoEditado).success(function(retorno) {
 				limpaFormulario();
-				alert("Serviço editado com sucesso");
+				alert("Funcionário editado com sucesso");
 				atualizaTable();
 				$("#divCadastroFuncionario").hide("slow","swing");
 				

@@ -9,10 +9,10 @@ CREATE TABLE IF NOT EXISTS `db_controle_servico`.`cliente` (
   `text_rg` VARCHAR(45) NULL DEFAULT NULL,
   `text_endereco` VARCHAR(100) NULL DEFAULT NULL,
   `text_cep` VARCHAR(45) NULL DEFAULT NULL,
-  `intg_estado` INT(11) NULL DEFAULT NULL,
+  `text_estado` VARCHAR(45) NULL DEFAULT NULL,
   `text_bairro` VARCHAR(45) NULL DEFAULT NULL,
   `text_email` VARCHAR(200) NULL DEFAULT NULL,
-  `intg_tipodepessoa` INT(11) NOT NULL,
+  `text_tipodepessoa` VARCHAR(10) NOT NULL,
   `dataDeCadastro` DATETIME NOT NULL,
   `dataDeAlteracao` DATETIME NOT NULL,
   `dataDeNascimento` DATE NULL DEFAULT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `db_controle_servico`.`funcionario` (
   `text_rg` VARCHAR(45) NULL DEFAULT NULL,
   `text_endereco` VARCHAR(100) NULL DEFAULT NULL,
   `text_cep` VARCHAR(45) NULL DEFAULT NULL,
-  `intg_estado` INT(11) NULL DEFAULT NULL,
+  `text_estado` VARCHAR(45) NULL DEFAULT NULL,
   `text_bairro` VARCHAR(45) NULL DEFAULT NULL,
   `text_email` VARCHAR(200) NULL DEFAULT NULL,
   `dataDeCadastro` DATETIME NOT NULL,
@@ -129,6 +129,10 @@ CREATE TABLE IF NOT EXISTS `db_controle_servico`.`usuario` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+
+INSERT INTO `db_controle_servico`.`usuario` (`usuario_id`, `text_email`, `text_login`, `text_senha`, `bool_ativo`) VALUES ('1', 'bruno-smv2@hotmail.com', 'admin', '1', '1');
+
 
 --SET FOREIGN_KEY_CHECKS = 0;
 --SET FOREIGN_KEY_CHECKS = 1;

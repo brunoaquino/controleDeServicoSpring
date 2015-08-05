@@ -27,6 +27,51 @@ function operateFormatterPadrao(value, row, index) {
 }
 
 function cpfCnpjFormatter(value, row) {
+	return formataCPFOuCNPJ(value);
+}
+//
+//function cpfFormatter(value, row) {
+//	var cpf = value;
+//	if (cpf != undefined) {
+//		if (cpf.length == 11) {
+//			return (cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "."
+//					+ cpf.substring(6, 9) + "-" + cpf.substring(9, 11));
+//		} else
+//			return cpf;
+//	} else
+//		return "";
+//}
+
+//function cnpjFormatter(value, row) {
+//	var cnpj = value;
+//	if (cnpj != undefined) {
+//		if (cnpj.length == 14) {
+//			return (cnpj.substring(0, 2) + "." + cnpj.substring(2, 5) + "."
+//					+ cnpj.substring(5, 8) + "/" + cnpj.substring(8, 12) + "-" + cnpj
+//					.substring(12, 14));
+//		} else
+//			return cnpj;
+//	} else
+//		return "";
+//}
+
+function dataFormatter(value, row) {
+	return value.substring(0, 10).replace("-", "/").replace("-", "/");
+}
+
+function formataData(value) {
+	var data = new Date(value);
+	var dia = data.getDate();
+	if (dia.toString().length == 1)
+		dia = "0" + dia;
+	var mes = data.getMonth() + 1;
+	if (mes.toString().length == 1)
+		mes = "0" + mes;
+	var ano = data.getFullYear();
+	return dia + "/" + mes + "/" + ano;
+}
+
+function formataCPFOuCNPJ(value) {
 	if (value.length > 11) {
 		var cnpj = value;
 		if (cnpj != undefined) {
@@ -49,45 +94,13 @@ function cpfCnpjFormatter(value, row) {
 		} else
 			return "";
 	}
-
 }
 
-
-function cpfFormatter(value, row) {
-	var cpf = value;
-	if (cpf != undefined) {
-		if (cpf.length == 11) {
-			return (cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "."
-					+ cpf.substring(6, 9) + "-" + cpf.substring(9, 11));
-		} else
-			return cpf;
-	} else
-		return "";
-}
-
-function cnpjFormatter(value, row) {
-	var cnpj = value;
-	if (cnpj != undefined) {
-		if (cnpj.length == 14) {
-			return (cnpj.substring(0, 2) + "." + cnpj.substring(2, 5) + "."
-					+ cnpj.substring(5, 8) + "/" + cnpj.substring(8, 12) + "-" + cnpj
-					.substring(12, 14));
-		} else
-			return cnpj;
-	} else
-		return "";
-}
-
-
-function dataFormatter(value, row) {
-	return value.substring(0, 10).replace("-", "/").replace("-", "/");
-}
 function dataConverterFormatter(value, row) {
-	var data = new Date(value);
-	return data.getDate() + '/' + (data.getMonth()+1) + '/' + data.getFullYear();
+	return formataData(value);
 }
 function moneyFormatter(value, row) {
-	return "R$"+moeda(value, 2, ',', '.');
+	return "R$" + moeda(value, 2, ',', '.');
 }
 
 function moeda(valor, casas, separdor_decimal, separador_milhar) {
