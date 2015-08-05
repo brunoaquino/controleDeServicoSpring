@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `db_controle_servico`.`cliente` (
   `dataDeNascimento` DATE NULL DEFAULT NULL,
   `observacoes` VARCHAR(200) NULL DEFAULT NULL,
   `text_telefone` VARCHAR(45) NULL DEFAULT NULL,
+  `text_celular` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`cliente_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
