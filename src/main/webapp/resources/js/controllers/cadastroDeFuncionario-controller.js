@@ -101,7 +101,8 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			funcionario.email = $("#inputEmailFuncionario").val();
 			funcionario.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");
 			if($('#inputDataNascimentoValue').val() != ""){
-				funcionario.dataDeNascimento = new Date($('#inputDataNascimentoValue').val());
+				dataNascimento = $("#inputDataNascimentoValue").val().split("/");
+				funcionario.dataDeNascimento = new Date(dataNascimento[2], dataNascimento[1] - 1, dataNascimento[0]);
 			}			
 			funcionario.rg = $("#inputRgFuncionario").val();
 			funcionario.telefone = $("#inputTelefoneFuncionario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
@@ -129,7 +130,8 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			funcionarioSendoEditado.email = $("#inputEmailFuncionario").val();
 			funcionarioSendoEditado.cpf = $("#inputCpfFuncionario").val().replace("-","").replace(".","").replace(".","");
 			if($('#inputDataNascimentoValue').val() != ""){
-				funcionarioSendoEditado.dataDeNascimento = new Date($('#inputDataNascimentoValue').val());
+				dataNascimento = $("#inputDataNascimentoValue").val().split("/");
+				funcionarioSendoEditado.dataDeNascimento = new Date(dataNascimento[2], dataNascimento[1] - 1, dataNascimento[0]);
 			}else{
 				funcionarioSendoEditado.dataDeNascimento = undefined;
 			}			

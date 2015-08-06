@@ -26,10 +26,10 @@ public class FuncionarioService extends ServicoBase {
 
 	private void validaFuncionario(Funcionario funcionario) {
 		if (funcionario.getNome() == null) {
-			throw new MensagemDeErroExeption("Nome é Ogrigatório");
+			throw new MensagemDeErroExeption("Nome é Obrigatório");
 		}
 		if (funcionario.getCpf() == null) {
-			throw new MensagemDeErroExeption("CPF é Ogrigatório");
+			throw new MensagemDeErroExeption("CPF é Obrigatório");
 		}
 	}
 

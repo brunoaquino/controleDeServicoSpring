@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `db_controle_servico`.`cliente` (
   `dataDeCadastro` DATETIME NOT NULL,
   `dataDeAlteracao` DATETIME NOT NULL,
   `dataDeNascimento` DATE NULL DEFAULT NULL,
-  `observacoes` VARCHAR(200) NULL DEFAULT NULL,
+  `text_observacoes` VARCHAR(200) NULL DEFAULT NULL,
   `text_telefone` VARCHAR(45) NULL DEFAULT NULL,
   `text_celular` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`cliente_id`))
