@@ -8,14 +8,16 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
+
 import br.com.cs.mvc.model.Usuario;
 
-@WebFilter("/*")
+//@WebFilter("/*")
+@Component
 public class FiltroRequisicao implements Filter {
 
 	private static final String USUARIO_LOGADO = "UsuarioLogado";
@@ -25,13 +27,16 @@ public class FiltroRequisicao implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request,
+			ServletResponse servletResponse, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) servletResponse;
-		
+
 		String urlDeAcesso = req.getRequestURI();
-		
-		if (urlDeAcesso.contains("/resources/") || urlDeAcesso.contains("/rest")) {
+
+		if (urlDeAcesso.contains("/resources/")
+				|| urlDeAcesso.contains("/rest")) {
 			chain.doFilter(request, resp);
 			return;
 		}
