@@ -1,5 +1,7 @@
 package br.com.cs.mvc.aplicacao;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Component;
 
 import br.com.cs.mvc.repositories.FabricaDeRepositorios;
@@ -9,8 +11,8 @@ import br.com.cs.mvc.repositories.Repositorio;
 public class Aplicacao {
 
 	private static Aplicacao instancia;
-
-//	@Resource(name = "fabricaDeRepositorios")
+	
+	@Resource(name = "fabricaDeRepositoriosFactory")
 	public FabricaDeRepositorios fabricaDeRepositorios;
 
 	public static Aplicacao get() {

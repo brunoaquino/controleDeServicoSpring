@@ -13,4 +13,6 @@ public interface ClienteRepository extends Repositorio {
 	public void atualiza(Cliente cliente);
 
 	public void exclui(Cliente cliente);
+	
+	public Cliente get(int id);
 }

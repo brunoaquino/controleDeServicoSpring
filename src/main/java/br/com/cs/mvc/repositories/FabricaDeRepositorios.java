@@ -10,14 +10,14 @@ public abstract class FabricaDeRepositorios {
 	public void acrescentaRepositorio(Repositorio repositorio) {
 		getRepositorios().put(repositorio.getClass(), repositorio);
 	}
-
-	public Repositorio getRepositorio( Class<? extends Repositorio> interfaceDoRepositorio) {
+	
+	public Repositorio getRepositorio(Class<? extends Repositorio> interfaceDoRepositorio) {
 		return getRepositorios().get(interfaceDoRepositorio);
 	}
-
-	protected abstract void doPopulaDefinicoesDeRepositorio( Map<Class<? extends Repositorio>, Repositorio> definicoesDosRepositorios);
-
-	private Map<Class<? extends Repositorio>, Repositorio> getRepositorios() {
+	
+	protected abstract void doPopulaDefinicoesDeRepositorio(Map<Class<? extends Repositorio>, Repositorio> definicoesDosRepositorios);
+	
+	private  Map<Class<? extends Repositorio>, Repositorio> getRepositorios() {
 		if (repositorios == null) {
 			repositorios = Collections.synchronizedMap(new HashMap<Class<? extends Repositorio>, Repositorio>());
 			doPopulaDefinicoesDeRepositorio(repositorios);

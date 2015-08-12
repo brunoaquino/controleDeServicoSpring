@@ -13,4 +13,6 @@ public interface FuncionarioRepository extends Repositorio {
 	public void atualiza(Funcionario funcionario);
 
 	public void exclui(Funcionario funcionario);
+	
+	public Funcionario get(int id);
 }

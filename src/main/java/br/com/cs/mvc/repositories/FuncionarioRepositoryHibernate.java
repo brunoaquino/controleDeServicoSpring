@@ -29,4 +29,9 @@ public class FuncionarioRepositoryHibernate extends RepositoryBase implements
 	public void exclui(Funcionario funcionario) {
 		this.hibernateTemplate.delete(funcionario);
 	}
+
+	@Override
+	public Funcionario get(int id) {
+		return this.hibernateTemplate.get(Funcionario.class, id);
+	}
 }

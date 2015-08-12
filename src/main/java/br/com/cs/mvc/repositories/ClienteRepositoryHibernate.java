@@ -29,4 +29,9 @@ public class ClienteRepositoryHibernate extends RepositoryBase implements
 	public void exclui(Cliente cliente) {
 		this.hibernateTemplate.delete(cliente);
 	}
+
+	@Override
+	public Cliente get(int id) {
+		return this.hibernateTemplate.get(Cliente.class, id);
+	}
 }

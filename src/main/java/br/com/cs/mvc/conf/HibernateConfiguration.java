@@ -38,6 +38,7 @@ public class HibernateConfiguration {
 	@Bean
 	public HibernateTemplate getHibernateTemplate(SessionFactory sessionFactory) {
 		HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
+		SpringContext.setTemplate(hibernateTemplate);
 		return hibernateTemplate;
 	}
 

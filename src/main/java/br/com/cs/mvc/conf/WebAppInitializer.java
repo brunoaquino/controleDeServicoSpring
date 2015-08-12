@@ -11,6 +11,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 import br.com.cs.mvc.filtro.FiltroRequisicao;
+import br.com.cs.mvc.filtro.OpenSessionInViewFilterHibernate4;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
@@ -18,7 +19,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 	public void onStartup(ServletContext container) throws ServletException {
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.getEnvironment().setDefaultProfiles("production");
-		rootContext.scan("br.com.cs.mvc.conf");
+		rootContext.scan("br.com.cs.mvc");
 
 		container.addListener(new ContextLoaderListener(rootContext));
 
@@ -27,6 +28,15 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		fr.setInitParameter("encoding", "UTF-8");
 		fr.setInitParameter("forceEncoding", "true");
 		fr.addMappingForUrlPatterns(null, true, "/*");
+		
+		
+		FilterRegistration.Dynamic hf = container.addFilter("hibernateFilter",new OpenSessionInViewFilterHibernate4());
+		
+		hf.setInitParameter("encoding", "UTF-8");
+		hf.setInitParameter("forceEncoding", "true");
+		hf.setInitParameter("singleSession", "true");
+		hf.setInitParameter("sessionFactoryBeanName", "sessionFactory");
+		hf.addMappingForUrlPatterns(null, true, "/*");
 
 		ServletRegistration.Dynamic servlet = container.addServlet("DispatcherServlet", DispatcherServlet.class);
 		servlet.setInitParameter("contextConfigLocation", "");
