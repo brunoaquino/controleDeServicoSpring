@@ -1,9 +1,14 @@
 package br.com.cs.mvc.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -16,6 +21,8 @@ public class Servico {
 	private double preco;
 	private String nome;
 	private String descricao;
+
+	private Set<OrdemDeServico> ordensDeServico = new HashSet<OrdemDeServico>(0);
 
 	// private Set<Funcionario> servicos = new HashSet<Funcionario>(0);
 
@@ -56,6 +63,15 @@ public class Servico {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "servicos")
+	public Set<OrdemDeServico> getOrdensDeServico() {
+		return ordensDeServico;
+	}
+
+	public void setOrdensDeServico(Set<OrdemDeServico> ordensDeServico) {
+		this.ordensDeServico = ordensDeServico;
 	}
 
 	// @ManyToMany(fetch = FetchType.LAZY, mappedBy = "servico")

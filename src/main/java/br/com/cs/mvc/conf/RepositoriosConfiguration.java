@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 import br.com.cs.mvc.repositories.ClienteRepository;
 import br.com.cs.mvc.repositories.ClienteRepositoryHibernate;
-import br.com.cs.mvc.repositories.FabricaDeRepositorios;
-import br.com.cs.mvc.repositories.FabricaDeRepositoriosFactory;
 import br.com.cs.mvc.repositories.FuncionarioRepository;
 import br.com.cs.mvc.repositories.FuncionarioRepositoryHibernate;
 import br.com.cs.mvc.repositories.OSRepository;
@@ -24,10 +22,10 @@ public class RepositoriosConfiguration {
 		return new UsuarioRepositoryHibernate();
 	}
 
-	@Bean(name = "fabricaDeRepositoriosFactory")
-	public FabricaDeRepositorios getFabricaDeRepositorios() {
-		return new FabricaDeRepositoriosFactory();
-	}
+//	@Bean(name = "fabricaDeRepositoriosFactory")
+//	public FabricaDeRepositorios getFabricaDeRepositorios() {
+//		return new FabricaDeRepositoriosFactory();
+//	}
 
 	@Bean(name = "servicoRepository")
 	public ServicoRepository getServicoRepository() {

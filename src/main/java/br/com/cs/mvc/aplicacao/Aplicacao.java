@@ -1,18 +1,14 @@
 package br.com.cs.mvc.aplicacao;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Component;
-
 import br.com.cs.mvc.repositories.FabricaDeRepositorios;
 import br.com.cs.mvc.repositories.Repositorio;
 
-@Component
+//@Component
 public class Aplicacao {
 
 	private static Aplicacao instancia;
-	
-	@Resource(name = "fabricaDeRepositoriosFactory")
+
+	// @Resource(name = "fabricaDeRepositoriosFactory")
 	public FabricaDeRepositorios fabricaDeRepositorios;
 
 	public static Aplicacao get() {
@@ -24,7 +20,8 @@ public class Aplicacao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends Repositorio> T getRepositorio(Class<? extends Repositorio> interfaceDoRepositorio) {
+	public <T extends Repositorio> T getRepositorio(
+			Class<? extends Repositorio> interfaceDoRepositorio) {
 		return (T) fabricaDeRepositorios.getRepositorio(interfaceDoRepositorio);
 	}
 

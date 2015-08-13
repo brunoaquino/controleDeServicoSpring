@@ -1,13 +1,18 @@
 package br.com.cs.mvc.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,10 +27,11 @@ public class OrdemDeServico {
 	private int id;
 	private Cliente cliente;
 	private Funcionario funcionario;
-//	private Set<Servico> servicos = new HashSet<Servico>();
+	private Set<Servico> servicos = new HashSet<Servico>();
 	private Date dataDeCadastro;
 	private Date dataDeAlteracao;
 	private Date dataDeAgendamento;
+	private Date dataDeExecucao;
 
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment")
@@ -39,7 +45,7 @@ public class OrdemDeServico {
 		this.id = id;
 	}
 
-	@ManyToOne(cascade = {CascadeType.ALL} )
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "cliente_id")
 	public Cliente getCliente() {
 		return cliente;
@@ -49,7 +55,7 @@ public class OrdemDeServico {
 		this.cliente = cliente;
 	}
 
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "funcionario_id")
 	public Funcionario getFuncionario() {
 		return funcionario;
@@ -67,6 +73,16 @@ public class OrdemDeServico {
 
 	public void setDataDeCadastro(Date dataDeCadastro) {
 		this.dataDeCadastro = dataDeCadastro;
+	}
+
+	@Column(name = "dataDeExecucao")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDataDeExecucao() {
+		return dataDeExecucao;
+	}
+
+	public void setDataDeExecucao(Date dataDeExecucao) {
+		this.dataDeExecucao = dataDeExecucao;
 	}
 
 	@Column(name = "dataDeAlteracao")
@@ -89,17 +105,17 @@ public class OrdemDeServico {
 		this.dataDeAgendamento = dataDeAgendamento;
 	}
 
-//	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,CascadeType.MERGE })
-//	@JoinTable(name = "funcionario_servico", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "servico_id"))
-//	public Set<Servico> getServicos() {
-//		if (servicos == null) {
-//			servicos = new HashSet<Servico>();
-//		}
-//		return servicos;
-//	}
-//
-//	public void setServicos(Set<Servico> servicos) {
-//		this.servicos = servicos;
-//	}
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,CascadeType.MERGE })
+	@JoinTable(name = "ordemDeServico_servico", joinColumns = @JoinColumn(name = "ordemdeservico_id"), inverseJoinColumns = @JoinColumn(name = "servico_id"))
+	public Set<Servico> getServicos() {
+		if (servicos == null) {
+			servicos = new HashSet<Servico>();
+		}
+		return servicos;
+	}
+
+	public void setServicos(Set<Servico> servicos) {
+		this.servicos = servicos;
+	}
 
 }
