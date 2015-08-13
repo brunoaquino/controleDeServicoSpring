@@ -37,6 +37,7 @@
 <script src="../resources/js/controllers/cadastroDeServico-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/cadastroDeFuncionario-controller.js" charset="utf-8"></script>
 <script src="../resources/js/controllers/cadastroDeCliente-controller.js" charset="utf-8"></script>
+<script src="../resources/js/controllers/gerenciadorDeServicos-controller.js" charset="utf-8"></script>
 
 
 <script src="../resources/bs-binary-admin/assets/js/jquery-1.10.2.js" charset="utf-8"></script>

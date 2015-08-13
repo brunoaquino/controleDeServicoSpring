@@ -8,5 +8,6 @@
 		</div>
 		<hr />
 		<%@include file="cadastros.jsp" %>
+		<%@include file="gerenciadorDeServicos.jsp" %>
 	</div>
 </div>

@@ -13,6 +13,11 @@ modulo.controller('ContainerController', function($scope, $http) {
 		}else{
 			$("#cadastros").hide();
 		}
+		if(item.titulo=='Gerenciador de Serviços'){
+			$("#gerenciadorDeServicos").show();
+		}else{
+			$("#gerenciadorDeServicos").hide();
+		}
 		
 			
 	};
