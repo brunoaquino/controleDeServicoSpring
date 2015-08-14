@@ -13,7 +13,7 @@ import br.com.cs.mvc.infra.Autenticador;
 import br.com.cs.mvc.model.Usuario;
 import br.com.cs.mvc.repositories.ClienteRepository;
 import br.com.cs.mvc.repositories.FuncionarioRepository;
-import br.com.cs.mvc.repositories.OSRepository;
+import br.com.cs.mvc.repositories.OrdemDeServicoRepository;
 import br.com.cs.mvc.repositories.UsuarioRepository;
 
 @Service
@@ -22,13 +22,13 @@ public class UsuarioService extends ServicoBase {
 	@Resource(name = "usuarioRepository")
 	public UsuarioRepository usuarioRepository;
 
-	@Resource(name = "OrdemDeServicoRepository")
-	public OSRepository osRepository;
+	@Resource(name = "ordemDeServicoRepository")
+	public OrdemDeServicoRepository osRepository;
 
-	@Resource(name = "FuncionarioRepository")
+	@Resource(name = "funcionarioRepository")
 	public FuncionarioRepository funcionarioRepository;
 
-	@Resource(name = "ClienteRepository")
+	@Resource(name = "clienteRepository")
 	public ClienteRepository clienteRepository;
 
 	@Autowired

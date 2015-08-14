@@ -14,7 +14,7 @@ import br.com.cs.mvc.repositories.ClienteRepository;
 @Service
 public class ClienteService extends ServicoBase {
 
-	@Resource(name = "ClienteRepository")
+	@Resource(name = "clienteRepository")
 	public ClienteRepository clienteRepository;
 
 	public void salva(Cliente cliente) {

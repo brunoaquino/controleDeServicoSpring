@@ -3,7 +3,7 @@ var listaDeFuncionarios = [];
 var tableFuncionario;
 var funcionarioSendoEditado;
 
-function atualizaTable(){
+function atualizaTableFuncionario(){
 	buscaFuncionarios();
 	tableFuncionario.bootstrapTable('load', listaDeFuncionarios);
 }
@@ -66,7 +66,7 @@ window.operateEventsCadastroDeFuncionario = {
 			call('http://localhost:8080/controleDeServico/rest/funcionario/delete',row).success(function(retorno) {
 				alert("Resgistro excluído com sucesso");
 				
-				atualizaTable();
+				atualizaTableFuncionario();
 				
 			}).error(function(msg) {
 				trataMensagemDeErro(msg);
@@ -118,7 +118,7 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			call('http://localhost:8080/controleDeServico/rest/funcionario/salva',funcionario).success(function(retorno) {
 				limpaFormulario();
 				alert("Funcionário criado com sucesso");
-				atualizaTable();
+				atualizaTableFuncionario();
 				$("#divCadastroFuncionario").hide("slow","swing");
 				
 			}).error(function(msg) {
@@ -154,7 +154,7 @@ modulo.controller('CadastroDeFuncionarioController', function($scope, $http) {
 			call('http://localhost:8080/controleDeServico/rest/funcionario/atualiza',funcionarioSendoEditado).success(function(retorno) {
 				limpaFormulario();
 				alert("Funcionário editado com sucesso");
-				atualizaTable();
+				atualizaTableFuncionario();
 				$("#divCadastroFuncionario").hide("slow","swing");
 				
 			}).error(function(msg) {

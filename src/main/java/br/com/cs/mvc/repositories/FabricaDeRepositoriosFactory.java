@@ -8,9 +8,6 @@ public class FabricaDeRepositoriosFactory extends FabricaDeRepositorios {
 	// @Resource(name = "usuarioRepository")
 	public UsuarioRepository usuarioRepository;
 
-	// @Resource(name = "OrdemDeServicoRepository")
-	public OSRepository osRepository;
-	//
 	// @Resource(name = "FuncionarioRepository")
 	public FuncionarioRepository funcionarioRepository;
 
