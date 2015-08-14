@@ -51,16 +51,16 @@ modulo.controller('GerenciadorDeServicosController', function($scope, $http) {
 	
 	ativaTable();
 	
+	
+	$('#osModal').on('hidden.bs.modal', function (e) {
+		limpaFormulario();
+	});
+	
 	$scope.salvar = function() {
 	}
 	$scope.editar = function() {
 	}
 
-	$scope.cancelar = function() {
-		limpaFormulario();
-		$("#divOrdemDeServico").hide("slow","swing");
-	}
-	
 	$scope.filtrarOrdensDeServicoPorFiltro = function() {
 		
 		var filtroOrdemDeServico = {};

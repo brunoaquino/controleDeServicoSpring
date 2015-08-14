@@ -1,24 +1,27 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<div class="col-md-12" id="gerenciadorDeServicos">
-	<div class="panel panel-primary" ng-controller="GerenciadorDeServicosController" id="divOrdemDeServico">
-		<div class="panel-heading">Ordem de Serviço</div>
-		<form role="form" name="formulario">
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row"></div>
-					</div>
-				</div>
-			</div>
-			<div class="panel-footer" style="text-align: right;">
-				<button type="button" class="btn btn-success" ng-click="salvar()" id="btnSalvarOrdemDeServico">salvar</button>
+<div class="col-md-12" id="gerenciadorDeServicos" ng-controller="GerenciadorDeServicosController">
+	<div class="modal fade" id="osModal" role="dialog" data-backdrop="static" style="margin-top: 5%;">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Ordem de Serviço</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>One fine body&hellip;</p>
+	      </div>
+	      <div class="modal-footer">
+		      <div style="text-align: right;">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		        <button type="button" class="btn btn-success" ng-click="salvar()" id="btnSalvarOrdemDeServico">salvar</button>
 				<button type="button" class="btn btn-success" ng-click="editar()" id="btnAlterarOrdemDeServico">Editar</button>
-				<button type="button" class="btn btn-primary" ng-click="cancelar()">Cancelar</button>
-			</div>
-		</form>
-	</div>
+			  </div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	
-	<div class="row" ng-controller="GerenciadorDeServicosController">				
+	<div class="row">				
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -50,12 +53,12 @@
 	</div>
 
 
-	<div class="row" ng-controller="GerenciadorDeServicosController">
+	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="text-align: right;">
 					<label style="float: left; margin-top: 7px;"> Agendamentos </label>
-					<button type="button" ng-click="novaOrdemDeServico()" class="btn btn-default" style="margin-left: 80%;">Nova Ordem de Serviço</button>
+					<button type="button" ng-click="novaOrdemDeServico()" data-toggle="modal" data-target="#osModal" class="btn btn-default" style="margin-left: 80%;">Nova Ordem de Serviço</button>
 				</div>
 				<div class="panel-body">
 					<table id="tableOrdemDeServico" data-sort-name="nome">
@@ -73,4 +76,5 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
