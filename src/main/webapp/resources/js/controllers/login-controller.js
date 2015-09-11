@@ -1,3 +1,5 @@
+var usuarioAutenticado;
+
 modulo.controller( 'LoginController', function($scope, $http) {
 	
 	$("#login").focus()
@@ -15,6 +17,7 @@ modulo.controller( 'LoginController', function($scope, $http) {
     function autentica(usuario){
     	call('http://localhost:8080/controleDeServico/rest/autenticacao/autentica', usuario)
 		.success(function(retorno){
+			usuarioAutenticado = retorno;
 			window.location = "http://localhost:8080/controleDeServico/views/index.jsp";
 		})
 		.error(function(msg){

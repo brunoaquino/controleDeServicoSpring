@@ -42,24 +42,6 @@ public class UsuarioService extends ServicoBase {
 			autenticador.autenticaUsuarioNaSessao(usuarioAutenticado);
 			return usuarioAutenticado;
 		}
-
-		// OrdemDeServico os = new OrdemDeServico();
-		//
-		// Cliente cliente = clienteRepository.get(1);
-		//
-		// Funcionario funcionario = funcionarioRepository.get(2);
-		//
-		// os.setDataDeCadastro(new Date());
-		// os.setDataDeAlteracao(new Date());
-		// os.setDataDeAgendamento(new Date());
-		//
-		// os.setCliente(cliente);
-		// os.setFuncionario(funcionario);
-		//
-		//
-		// osRepository.salva(os);
-
-		// return new Usuario();
 	}
 
 	public void logout() {

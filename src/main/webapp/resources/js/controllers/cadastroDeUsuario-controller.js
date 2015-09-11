@@ -8,10 +8,39 @@ function atualizaTableUsuario(){
 	tableUsuario.bootstrapTable('load', listaDeUsuarios);
 }
 
+function ativaMascarasUsuario(){
+	$('#inputCepUsuario').mask('00000-000');
+	$('#inputTelefoneUsuario').mask('(00)0000-0000');
+	$('#inputCelularUsuario').mask('(00)0000-0000');
+	$('#inputCpfUsuario').mask('999.999.999-99');
+	$('#inputRgUsuario').mask('99999999999');
+	
+	 $('#inputDataNascimento').datepicker({
+			autoclose : true,
+			format:'dd/mm/yyyy',
+			todayHighlight : true,
+			language : 'pt-BR'
+		});
+}
+
 function carregaUsuario(usuario){
 	if(usuario!=undefined){
-		$("#inputEmail").val(usuario.email);
-		$("#inputLogin").val(usuario.login);
+		$("#inputNomeUsuario").val(usuario.nome);
+		$("#inputEmailUsuario").val(usuario.email);
+		$("#inputCpfUsuario").val(formataCPFOuCNPJ(usuario.cpf));
+		$("#inputRgUsuario").val(usuario.rg);
+		
+		if(usuario.dataDeNascimento != undefined && usuario.dataDeNascimento != ""){
+			$("#inputDataNascimentoValue").val(formataData(usuario.dataDeNascimento));
+		}
+		
+		$("#inputTelefoneUsuario").val(usuario.telefone);
+		$("#inputCelularUsuario").val(usuario.celular);
+		$("#inputEnderecoUsuario").val(usuario.endereco);
+		$("#inputCepUsuario").val(usuario.cep);
+		$("#SelectEstado").val(usuario.estado);
+		$("#inputBairroUsuario").val(usuario.bairro);
+		$("#inputObservacoesUsuario").val(usuario.observacoes);
 	}
 	$("#btnSalvarUsuario").hide();
 	$("#btnAlterarUsuario").show();
@@ -25,6 +54,14 @@ window.operateEventsCadastroDeUsuario = {
 	},
 	'click .remove' : function(e, value, row, index) {
 		if(confirm("Excluir Registro?")){
+			
+			row.dataDeAlteracao = new Date(row.dataDeAlteracao);
+			row.dataDeCadastro = new Date(row.dataDeCadastro);
+			
+			if(row.dataDeNascimento != undefined && row.dataDeNascimento != ""){
+				row.dataDeNascimento = new Date(row.dataDeNascimento);
+			}
+			
 			call('http://localhost:8080/controleDeServico/rest/usuario/delete',row).success(function(retorno) {
 				alert("Resgistro excluído com sucesso");
 				
@@ -49,41 +86,61 @@ function buscaUsuarios() {
 modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 	$("#divCadastroUsuario").hide();
 	
-	$("#btnSalvarUsuario").show();
-	$("#btnAlterarUsuario").hide();
-
 	buscaUsuarios();
 
 	ativaTable();
 	
-	$scope.salvar = function(usuario) {
-		if (isDadosValidos(usuario)) {
-			call('http://localhost:8080/controleDeServico/rest/usuario/salva',usuario).success(function(retorno) {
-				limpaFormulario();
-				alert("Usuário criado com sucesso");
-				atualizaTableUsuario();
-				$("#divCadastroUsuario").hide("slow","swing");
-				
-			}).error(function(msg) {
-				trataMensagemDeErro(msg);
-			});
+	$scope.salvar = function() {
+			var usuario = {};
+			usuario.email = $("#inputEmailUsuario").val();
+			usuario.senha = $("#inputSenhaUsuario").val();
+			usuario.login = $("#inputLoginUsuario");
+			empresa = {
+				id:$("#SelectEmpresaDoUsuario").val()
+			}
+			usuario.empresa = empresa;
+			
+			isDadosValidos(usuario);
+			
+//			call('http://localhost:8080/controleDeServico/rest/usuario/salva',usuario).success(function(retorno) {
+//				limpaFormulario();
+//				alert("Usuáio criado com sucesso");
+//				atualizaTableUsuario();
+//				$("#divCadastroUsuario").hide("slow","swing");
+//				
+//			}).error(function(msg) {
+//				trataMensagemDeErro(msg);
+//			});
 		}
-	}
-	$scope.editar = function(usuario) {
-		if(usuario.login!=undefined){
-			usuarioSendoEditado.login = usuario.login;
-		}
-		if(usuario.email!=undefined){
-			usuarioSendoEditado.email = usuario.email;
-		}
-		if(usuario.senha!=undefined){
-			usuarioSendoEditado.senha = usuario.senha;
-		}
+	$scope.editar = function() {
+			usuarioSendoEditado.nome = $("#inputNomeUsuario").val();
+			usuarioSendoEditado.email = $("#inputEmailUsuario").val();
+			usuarioSendoEditado.cpf = $("#inputCpfUsuario").val().replace("-","").replace(".","").replace(".","");
+			if($('#inputDataNascimentoValue').val() != ""){
+				dataNascimento = $("#inputDataNascimentoValue").val().split("/");
+				usuarioSendoEditado.dataDeNascimento = new Date(dataNascimento[2], dataNascimento[1] - 1, dataNascimento[0]);
+			}else{
+				usuarioSendoEditado.dataDeNascimento = undefined;
+			}			
+			usuarioSendoEditado.rg = $("#inputRgUsuario").val();
+			usuarioSendoEditado.telefone = $("#inputTelefoneUsuario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
+			usuarioSendoEditado.celular = $("#inputCelularUsuario").val().replace("-","").replace(" ","").replace("(","").replace(")","");
+			usuarioSendoEditado.endereco = $("#inputEnderecoUsuario").val();
+			usuarioSendoEditado.cep = $("#inputCepUsuario").val().replace("-","").replace(".","").replace(".","");
+			usuarioSendoEditado.estado = $("#SelectEstado").val();
+			usuarioSendoEditado.bairro = $("#inputBairroUsuario").val();
+			usuarioSendoEditado.observacoes = $("#inputObservacoesUsuario").val();
+			
+			
+			usuarioSendoEditado.dataDeAlteracao = new Date(usuarioSendoEditado.dataDeAlteracao);
+			usuarioSendoEditado.dataDeCadastro = new Date(usuarioSendoEditado.dataDeCadastro);
+			
+			isDadosValidos(usuarioSendoEditado);
 		
 		if (isDadosValidos(usuarioSendoEditado)) {
 			call('http://localhost:8080/controleDeServico/rest/usuario/atualiza',usuarioSendoEditado).success(function(retorno) {
 				limpaFormulario();
-				alert("Usuário editado com sucesso");
+				alert("Usuáio editado com sucesso");
 				atualizaTableUsuario();
 				$("#divCadastroUsuario").hide("slow","swing");
 				
@@ -93,7 +150,7 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 		}
 	}
 
-	$scope.cancelar = function(usuario) {
+	$scope.cancelar = function() {
 		limpaFormulario();
 		$("#divCadastroUsuario").hide("slow","swing");
 	}
@@ -121,6 +178,10 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 				alert("Campo senha é obrigatório");
 				dadosValidos = false;
 			}
+			if(usuario.empresa.id==''){
+				alert("Campo empresa é obrigatório");
+				dadosValidos = false;
+			}
 		} else {
 			alert("Preencha os dados do usuário");
 			dadosValidos = false;
@@ -130,9 +191,10 @@ modulo.controller('CadastroDeUsuarioController', function($scope, $http) {
 	}
 	
 	function limpaFormulario(){
-		$("#inputEmail").val("");
-		$("#inputLogin").val("");
-		$("#inputSenha").val("");
+		$("#inputEmailUsuario").val("");
+		$("#inputLoginUsuario").val("");
+		$("#inputSenhaUsuario").val("");
+		$("#SelectEmpresaDoUsuario").val("");
 	};
 
 	function ativaTable() {

@@ -73,7 +73,7 @@
 			</div>
 		</div>
 		<div class="panel-footer" style="text-align: right;">
-			<button type="button" class="btn btn-success" ng-click="salvar()" id="btnSalvarFuncionario">salvar</button>
+			<button type="button" class="btn btn-success" ng-click="salvar()" id="btnSalvarFuncionario">Salvar</button>
 			<button type="button" class="btn btn-success" ng-click="editar()" id="btnAlterarFuncionario">Editar</button>
 			<button type="button" class="btn btn-primary" ng-click="cancelar()">Cancelar</button>
 		</div>
