@@ -14,8 +14,8 @@ function carregaOrdemDeServico(os){
 
 window.operateEventsGerenciadorDeServicos = {
 	'click .edit' : function(e, value, row, index) {
+		$('#osModal').modal();
 		osSendoEditada = row;
-		$("#divOrdemDeServico").show("slow","swing");
 		carregaOrdemDeServico(row);
 	},
 	'click .remove' : function(e, value, row, index) {

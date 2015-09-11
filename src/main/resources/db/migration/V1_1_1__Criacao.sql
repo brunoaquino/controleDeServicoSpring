@@ -83,11 +83,11 @@ COLLATE = utf8_general_ci;
 CREATE TABLE IF NOT EXISTS `db_controle_servico`.`historicoOS` (
   `historicoOS_id` INT(11) NOT NULL,
   `dataDeCadastro` DATETIME NOT NULL,
-  `ordemDeServico_ordemdeservico_id` INT(11) NOT NULL,
+  `ordemdeservico_id` INT(11) NOT NULL,
   PRIMARY KEY (`historicoOS_id`),
-  INDEX `fk_historicoOS_ordemDeServico1_idx` (`ordemDeServico_ordemdeservico_id` ASC),
+  INDEX `fk_historicoOS_ordemDeServico1_idx` (`ordemdeservico_id` ASC),
   CONSTRAINT `fk_historicoOS_ordemDeServico1`
-    FOREIGN KEY (`ordemDeServico_ordemdeservico_id`)
+    FOREIGN KEY (`ordemdeservico_id`)
     REFERENCES `db_controle_servico`.`ordemDeServico` (`ordemdeservico_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -120,7 +120,17 @@ CREATE TABLE IF NOT EXISTS `db_controle_servico`.`usuario` (
   `text_senha` VARCHAR(12) NOT NULL,
   `bool_ativo` TINYINT(4) NOT NULL DEFAULT 1,
   `text_login` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`usuario_id`))
+  `empresa_id` INT(11) NULL DEFAULT NULL,
+  `bool_admin` TINYINT(4) NOT NULL DEFAULT 0,
+  `dataDeCadastro` DATETIME NOT NULL,
+  `dataDeAlteracao` DATETIME NOT NULL,
+  PRIMARY KEY (`usuario_id`),
+  INDEX `fk_usuario_empresa1_idx` (`empresa_id` ASC),
+  CONSTRAINT `fk_usuario_empresa1`
+    FOREIGN KEY (`empresa_id`)
+    REFERENCES `db_controle_servico`.`empresa` (`empresa_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
@@ -144,8 +154,27 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
+CREATE TABLE IF NOT EXISTS `db_controle_servico`.`empresa` (
+  `empresa_id` INT(11) NOT NULL,
+  `text_nomeFantasia` VARCHAR(200) NOT NULL,
+  `text_razaoSocial` VARCHAR(200) NOT NULL,
+  `text_cnpj` VARCHAR(45) NOT NULL,
+  `text_telefone` VARCHAR(200) NULL DEFAULT NULL,
+  `text_email` VARCHAR(100) NULL DEFAULT NULL,
+  `bool_ativo` TINYINT(4) NULL DEFAULT 1,
+  `text_endereco` VARCHAR(100) NULL DEFAULT NULL,
+  `text_cep` VARCHAR(45) NULL DEFAULT NULL,
+  `dataDeCadastro` DATETIME NOT NULL,
+  `dataDeAlteracao` DATETIME NOT NULL,
+  `text_observacoes` VARCHAR(300) NULL DEFAULT NULL,
+  PRIMARY KEY (`empresa_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
-INSERT INTO `db_controle_servico`.`usuario` (`usuario_id`, `text_email`, `text_login`, `text_senha`, `bool_ativo`) VALUES ('1', 'bruno-smv2@hotmail.com', 'admin', '1', '1');
+
+INSERT INTO `db_controle_servico`.`usuario` (`usuario_id`, `text_email`, `text_senha`, `bool_ativo`, `text_login`, `bool_admin`, `dataDeCadastro`, `dataDeAlteracao`) VALUES ('1', 'bruno-smv2@hotmail.com', '1', '1', 'admin', '1', '2015-09-11 16:17:25', '2015-09-11 16:17:25');
+
 
 --SET FOREIGN_KEY_CHECKS = 0;
 --SET FOREIGN_KEY_CHECKS = 1;

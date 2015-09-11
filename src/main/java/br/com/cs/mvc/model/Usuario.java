@@ -1,10 +1,16 @@
 package br.com.cs.mvc.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,6 +23,10 @@ public class Usuario {
 	private String login;
 	private String senha;
 	private boolean ativo;
+	private boolean admin;
+	private Empresa empresa;
+	private Date dataDeCadastro;
+	private Date dataDeAlteracao;
 
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment")
@@ -64,6 +74,45 @@ public class Usuario {
 
 	public void setLogin(String login) {
 		this.login = login;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "empresa_id")
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	@Column(name = "bool_admin")
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	@Column(name = "dataDeCadastro")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDataDeCadastro() {
+		return dataDeCadastro;
+	}
+
+	public void setDataDeCadastro(Date dataDeCadastro) {
+		this.dataDeCadastro = dataDeCadastro;
+	}
+
+	@Column(name = "dataDeAlteracao")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDataDeAlteracao() {
+		return dataDeAlteracao;
+	}
+
+	public void setDataDeAlteracao(Date dataDeAlteracao) {
+		this.dataDeAlteracao = dataDeAlteracao;
 	}
 
 }
